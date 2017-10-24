@@ -1,0 +1,50 @@
+<link rel="import" href="../bower_components/polymer/polymer.html" />
+
+<!-- Predix components used by this app view -->
+<link rel="import" href="../bower_components/px-card/px-card.html" />
+<link rel="import" href="../bower_components/px-simple-bar-chart/px-simple-bar-chart.html" />
+<link rel="import" href="../bower_components/px-key-value-pair/px-key-value-pair.html" />
+<link rel="import" href="../bower_components/px-kpi/px-kpi.html" />
+<link rel="import" href="../bower_components/px-gauge/px-gauge.html" />
+<link rel="import" href="../bower_components/px-card/px-card.html" />
+<link rel="import" href="../bower_components/px-map/px-map.html" />
+<link rel="import" href="../bower_components/px-map/px-map-tile-layer.html" />
+<link rel="import" href="../bower_components/px-map/px-map-marker-symbol.html" />
+
+<!-- Load styles -->
+<link rel="import" href="../css/px-sample-app-styles.html" />
+
+<dom-module id="px-sample-dashboard">
+  <template>
+    <style include="px-sample-app-styles"></style>
+
+    <!-- By placing several px-key-value-pairs in a flex container, we can easily create a "spine" which is a term
+         we use for a row of KPIs or other high level information about an asset on the top of a dashboard. -->
+
+    <div class="spine u-pt">
+      <span class="heading--page u-p">{{title}}</span>
+
+      <div class="flex flex--wrap flex--justify">
+        <px-kpi class="kpi1 u-p" title="Avg temp" value="65" uom="ºF" spark-type="bar" spark-data='[57,59,61,63,64,68,72,73,72,68,63,57]'></px-kpi>
+        <px-kpi class="kpi2 u-p" title="Avg rainfall" value="22" uom="mm" spark-type="bar" spark-data='[48,53,38,18,8,3,3,3,3,10,23,51]'></px-kpi>
+        <px-kpi class="kpi3 u-p" title="Avg sun" value="8" uom="hrs/day" spark-type="bar" spark-data='[7,8,8,8,8,8,10,9,9,8,8,8]'></px-kpi>
+      </div>
+    </div>
+
+    <!-- This last px-card includes a px-map. -->
+    <px-card class="light-card" header-text="Solar Installations" icon="px-fea:products" full-bleed>
+      <div class='actions'>
+        <px-icon icon='px-utl:app-settings'></px-icon>
+      </div>
+      <div style="width:100%; height:500px; display:flex;">
+        <px-map class="map1" zoom="14" lat="32.716089" lng="-117.164744" flex-to-size disable-scroll-zoom>
+          <px-map-marker-symbol lat="32.716089" lng="-117.164744" type="info" icon="px-obj:solar-panel"></px-map-marker-symbol>
+          <px-map-tile-layer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png">
+          </px-map-tile-layer>
+        </px-map>
+      </div>
+    </px-card>
+
+  </template>
+</dom-module>
+<script src="px-sample-dashboard.js"></script>

@@ -1,0 +1,1812 @@
+{
+	"id": "c9e0a8ac-fceb-a63d-1fcf-9b9bc5607042",
+	"name": "IC-VPC-APIs-Hackathon",
+	"description": "",
+	"order": [],
+	"folders": [
+		{
+			"id": "6fd72c4e-979d-16ab-1d4c-f9cdc4a621d4",
+			"name": "Events",
+			"description": "",
+			"order": [
+				"76613290-f758-2d50-8e8e-96a3124be875",
+				"e037d8df-f2c2-caf3-2613-73359f5c6888",
+				"449bccf1-0f39-11d6-ae86-a483245bacc1",
+				"a1560409-5533-73e4-1c06-97ce78333d95",
+				"9c386114-ecf8-e8f5-3255-51a7fdbeb44b",
+				"ff342736-dc89-77d5-554f-2c765e0783fc",
+				"52ab4ac3-0984-9ad2-d632-5c576425bf08",
+				"735ed75d-fee8-f603-f2c7-022ebd309c08",
+				"33acc5fa-4244-7416-3cb7-91c7f7297f4a",
+				"c6c88551-b937-aa9b-cde8-16dce1e0120f",
+				"620cdb82-91ee-53e1-c37b-57d287ec9ef8",
+				"3b3f2e94-10ba-d4b1-33a6-191bd46bd22d",
+				"e8f552de-62ff-0606-cce6-3555f7c1c6e4",
+				"692210c0-cbfb-9c69-52ec-9b0386c35df1"
+			],
+			"owner": 0
+		},
+		{
+			"id": "802ce125-fe65-2f39-444c-499fe0882ed1",
+			"name": "Media (follow 3 Steps process)",
+			"description": "",
+			"order": [
+				"93bcbda2-3fdd-15a9-2643-d1a9c7750faa",
+				"8d69fba9-5a0c-bfe5-b170-74e52580e507",
+				"67b6af90-366d-c5cc-8f72-03045b258b46",
+				"301ec439-e81b-07cb-638d-e9baeba6df85",
+				"d60c2aba-e183-21d5-08d4-5d64a329223a",
+				"e76ee703-492a-1af0-8a1f-073a5c062540",
+				"ebd5edee-6093-d25e-6ad5-bcebb34080ba",
+				"260de547-269f-fe05-a878-f78e9ddb8dec"
+			],
+			"owner": 0,
+			"collectionId": "c9e0a8ac-fceb-a63d-1fcf-9b9bc5607042"
+		},
+		{
+			"id": "d4ae9e23-10b1-d0f9-1009-efb650fce96a",
+			"name": "Metadata",
+			"description": "",
+			"order": [
+				"db0546bf-39be-b0fe-a3a0-98bb05aa80fb",
+				"8bdf82d9-2845-aa37-375c-262d7ca6de6d",
+				"d16c9fc5-73a2-fd32-b0f0-a3c2acac9647",
+				"3e451432-ceb2-0b0c-0da9-af2c440cbf76",
+				"61e9bd8a-c1f5-fd08-d53a-10ac01fff174",
+				"bf6e7bed-ce3d-4392-8522-40b1acc006d1",
+				"2a35cd10-2d04-945e-b9a2-0d4a602db2d8"
+			],
+			"owner": 0,
+			"folders_order": []
+		},
+		{
+			"id": "100cb6ed-04e2-f6c9-d6f9-1701cea3efdf",
+			"name": "Tokens",
+			"description": "",
+			"order": [
+				"056b4126-c795-5f41-28ab-bd97f2422a7e"
+			],
+			"owner": 0,
+			"collectionId": "c9e0a8ac-fceb-a63d-1fcf-9b9bc5607042",
+			"folders_order": []
+		}
+	],
+	"folders_order": [
+		"100cb6ed-04e2-f6c9-d6f9-1701cea3efdf",
+		"d4ae9e23-10b1-d0f9-1009-efb650fce96a",
+		"6fd72c4e-979d-16ab-1d4c-f9cdc4a621d4",
+		"802ce125-fe65-2f39-444c-499fe0882ed1"
+	],
+	"timestamp": 0,
+	"owner": 0,
+	"public": false,
+	"requests": [
+		{
+			"id": "056b4126-c795-5f41-28ab-bd97f2422a7e",
+			"headers": "Authorization: Basic aWMuc3RhZ2Uuc2ltLmRldmVsb3A6ZGV2\n//Content-Type: application/x-www-form-urlencoded\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Basic aWMuc3RhZ2Uuc2ltLmRldmVsb3A6ZGV2",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"description": "",
+					"enabled": false
+				}
+			],
+			"url": "{{UAAURL}}?grant_type=client_credentials",
+			"queryParams": [
+				{
+					"key": "grant_type",
+					"value": "client_credentials",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": "",
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [
+				{
+					"key": "username",
+					"value": "ic.admin",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "password",
+					"value": "admin",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"tests": "var data = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"client_token\", data.access_token);",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{client}}",
+				"password": "{{pwd}}",
+				"saveToRequest": true
+			},
+			"time": 1500674663247,
+			"name": "Get client Token",
+			"description": "",
+			"collectionId": "c9e0a8ac-fceb-a63d-1fcf-9b9bc5607042",
+			"responses": [],
+			"folder": "100cb6ed-04e2-f6c9-d6f9-1701cea3efdf",
+			"isFromCollection": true,
+			"collectionRequestId": "3f9cb70c-d374-0c83-cc87-67b943ee1c00"
+		},
+		{
+			"id": "260de547-269f-fe05-a878-f78e9ddb8dec",
+			"headers": "Authorization: Bearer {{client_token}}\nPredix-Zone-Id: {{ps_zone_id}}\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer {{client_token}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Predix-Zone-Id",
+					"value": "{{ps_zone_id}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "###     PASTE  url  here   ### ",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1497912108005,
+			"name": "(step 3) If Sussess-paste url here (do send & download)",
+			"description": "",
+			"collectionId": "c9e0a8ac-fceb-a63d-1fcf-9b9bc5607042",
+			"responses": [],
+			"folder": "802ce125-fe65-2f39-444c-499fe0882ed1"
+		},
+		{
+			"id": "2a35cd10-2d04-945e-b9a2-0d4a602db2d8",
+			"headers": "Authorization: Bearer {{client_token}}\nPredix-Zone-Id: {{traffic_zone_id}}\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer {{client_token}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Predix-Zone-Id",
+					"value": "{{traffic_zone_id}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{metadataurl}}/locations/{{locationId}}/assets",
+			"queryParams": [],
+			"preRequestScript": "",
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1502149140993,
+			"name": "Get Location-->Asset list",
+			"description": "",
+			"collectionId": "c9e0a8ac-fceb-a63d-1fcf-9b9bc5607042",
+			"responses": [],
+			"folder": "d4ae9e23-10b1-d0f9-1009-efb650fce96a"
+		},
+		{
+			"id": "301ec439-e81b-07cb-638d-e9baeba6df85",
+			"headers": "Authorization: Bearer {{client_token}}\nPredix-Zone-Id: {{ps_zone_id}}\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer {{client_token}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Predix-Zone-Id",
+					"value": "{{ps_zone_id}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{mediaurl}}/ondemand/locations/{{traffic_loc}}/media?mediaType=VIDEO&timestamp={{startts}}",
+			"queryParams": [
+				{
+					"key": "mediaType",
+					"value": "VIDEO",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "timestamp",
+					"value": "{{startts}}",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1501614083741,
+			"name": "(step 1) Get Video mediaOnDemand Location",
+			"description": "",
+			"collectionId": "c9e0a8ac-fceb-a63d-1fcf-9b9bc5607042",
+			"responses": [],
+			"folder": "802ce125-fe65-2f39-444c-499fe0882ed1"
+		},
+		{
+			"id": "33acc5fa-4244-7416-3cb7-91c7f7297f4a",
+			"headers": "Authorization: Bearer {{client_token}}\nPredix-Zone-Id: {{traffic_zone_id}}\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer {{client_token}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Predix-Zone-Id",
+					"value": "{{traffic_zone_id}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{eventurl}}/locations/events?eventType=TFEVT&bbox={{bbox}}&locationType=TRAFFIC_LANE&startTime={{startts}}&endTime={{endts}}",
+			"queryParams": [
+				{
+					"key": "eventType",
+					"value": "TFEVT",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "bbox",
+					"value": "{{bbox}}",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "locationType",
+					"value": "TRAFFIC_LANE",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "startTime",
+					"value": "{{startts}}",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "endTime",
+					"value": "{{endts}}",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1497909218141,
+			"name": "Get TFEVT by bbox",
+			"description": "",
+			"collectionId": "c9e0a8ac-fceb-a63d-1fcf-9b9bc5607042",
+			"responses": [],
+			"folder": "6fd72c4e-979d-16ab-1d4c-f9cdc4a621d4"
+		},
+		{
+			"id": "3b3f2e94-10ba-d4b1-33a6-191bd46bd22d",
+			"headers": "Authorization: Bearer {{client_token}}\nPredix-Zone-Id: {{ped_zone_id}}\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer {{client_token}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Predix-Zone-Id",
+					"value": "{{ped_zone_id}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{eventurl}}/locations/events?eventType=PEDEVT&bbox={{bbox}}&locationType=WALKWAY&startTime={{startts}}&endTime={{endts}}",
+			"queryParams": [
+				{
+					"key": "eventType",
+					"value": "PEDEVT",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "bbox",
+					"value": "{{bbox}}",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "locationType",
+					"value": "WALKWAY",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "startTime",
+					"value": "{{startts}}",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "endTime",
+					"value": "{{endts}}",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1497909234988,
+			"name": "Get PEDEVT by bbox",
+			"description": "",
+			"collectionId": "c9e0a8ac-fceb-a63d-1fcf-9b9bc5607042",
+			"responses": [],
+			"folder": "6fd72c4e-979d-16ab-1d4c-f9cdc4a621d4"
+		},
+		{
+			"id": "3e451432-ceb2-0b0c-0da9-af2c440cbf76",
+			"headers": "Authorization: Bearer {{client_token}}\nPredix-Zone-Id: {{traffic_zone_id}}\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer {{client_token}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Predix-Zone-Id",
+					"value": "{{traffic_zone_id}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{metadataurl}}/assets/{{node}}/subAssets",
+			"queryParams": [],
+			"preRequestScript": "",
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1502149163608,
+			"name": "Get Sub Assets",
+			"description": "",
+			"collectionId": "c9e0a8ac-fceb-a63d-1fcf-9b9bc5607042",
+			"responses": [],
+			"folder": "d4ae9e23-10b1-d0f9-1009-efb650fce96a"
+		},
+		{
+			"id": "449bccf1-0f39-11d6-ae86-a483245bacc1",
+			"headers": "Authorization: Bearer {{client_token}}\nPredix-Zone-Id: {{parking_zone_id}}\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer {{client_token}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Predix-Zone-Id",
+					"value": "{{parking_zone_id}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{eventurl}}/locations/events?bbox={{bbox}}&locationType=PARKING_ZONE&eventType=PKIN&startTime={{startts}}&endTime={{endts}}",
+			"queryParams": [
+				{
+					"key": "bbox",
+					"value": "{{bbox}}",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "locationType",
+					"value": "PARKING_ZONE",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "eventType",
+					"value": "PKIN",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "startTime",
+					"value": "{{startts}}",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "endTime",
+					"value": "{{endts}}",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1497909168854,
+			"name": "Get PKIN by bbox",
+			"description": "",
+			"collectionId": "c9e0a8ac-fceb-a63d-1fcf-9b9bc5607042",
+			"responses": [],
+			"folder": "6fd72c4e-979d-16ab-1d4c-f9cdc4a621d4"
+		},
+		{
+			"id": "52ab4ac3-0984-9ad2-d632-5c576425bf08",
+			"headers": "Authorization: Bearer {{client_token}}\nPredix-Zone-Id: {{traffic_zone_id}}\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer {{client_token}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Predix-Zone-Id",
+					"value": "{{traffic_zone_id}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{eventurl}}/assets/{{traffic_asset}}/events?eventType=TFEVT&startTime={{startts}}&endTime={{endts}}",
+			"queryParams": [
+				{
+					"key": "eventType",
+					"value": "TFEVT",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "startTime",
+					"value": "{{startts}}",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "endTime",
+					"value": "{{endts}}",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1497909205549,
+			"name": "Get TFEVT by assetId",
+			"description": "",
+			"collectionId": "c9e0a8ac-fceb-a63d-1fcf-9b9bc5607042",
+			"responses": [],
+			"folder": "6fd72c4e-979d-16ab-1d4c-f9cdc4a621d4"
+		},
+		{
+			"id": "61e9bd8a-c1f5-fd08-d53a-10ac01fff174",
+			"headers": "Authorization: Bearer {{client_token}}\nPredix-Zone-Id: {{traffic_zone_id}}\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer {{client_token}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Predix-Zone-Id",
+					"value": "{{traffic_zone_id}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{metadataurl}}/locations/{{traffic_loc}}",
+			"queryParams": [],
+			"preRequestScript": "",
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1502149150600,
+			"name": "Get Location Detail",
+			"description": "",
+			"collectionId": "c9e0a8ac-fceb-a63d-1fcf-9b9bc5607042",
+			"responses": [],
+			"folder": "d4ae9e23-10b1-d0f9-1009-efb650fce96a"
+		},
+		{
+			"id": "620cdb82-91ee-53e1-c37b-57d287ec9ef8",
+			"headers": "Authorization: Bearer {{client_token}}\nPredix-Zone-Id: {{ped_zone_id}}\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer {{client_token}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Predix-Zone-Id",
+					"value": "{{ped_zone_id}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{eventurl}}/locations/{{ped_loc}}/events?eventType=PEDEVT&startTime={{startts}}&endTime={{endts}}",
+			"queryParams": [
+				{
+					"key": "eventType",
+					"value": "PEDEVT",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "startTime",
+					"value": "{{startts}}",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "endTime",
+					"value": "{{endts}}",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1497909229637,
+			"name": "Get PEDEVT by locationId",
+			"description": "",
+			"collectionId": "c9e0a8ac-fceb-a63d-1fcf-9b9bc5607042",
+			"responses": [],
+			"folder": "6fd72c4e-979d-16ab-1d4c-f9cdc4a621d4"
+		},
+		{
+			"id": "67b6af90-366d-c5cc-8f72-03045b258b46",
+			"headers": "Authorization: Bearer {{client_token}}\nPredix-Zone-Id: {{ps_zone_id}}\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer {{client_token}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Predix-Zone-Id",
+					"value": "{{ps_zone_id}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{mediaurl}}/ondemand/assets/{{traffic_asset}}/media?mediaType=VIDEO&timestamp={{startts}}",
+			"queryParams": [
+				{
+					"key": "mediaType",
+					"value": "VIDEO",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "timestamp",
+					"value": "{{startts}}",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1501614067470,
+			"name": "(step 1) Get Video mediaOnDemand Asset",
+			"description": "",
+			"collectionId": "c9e0a8ac-fceb-a63d-1fcf-9b9bc5607042",
+			"responses": [],
+			"folder": "802ce125-fe65-2f39-444c-499fe0882ed1"
+		},
+		{
+			"id": "692210c0-cbfb-9c69-52ec-9b0386c35df1",
+			"headers": "Authorization: Bearer {{client_token}}\nPredix-Zone-Id: {{env_zone_id}}\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer {{client_token}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Predix-Zone-Id",
+					"value": "{{env_zone_id}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{eventurl}}/assets/ENV-ATL-0003-1/events?eventType=HUMIDITY&startTime={{startts}}&endTime={{endts}}",
+			"queryParams": [
+				{
+					"key": "eventType",
+					"value": "HUMIDITY",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "startTime",
+					"value": "{{startts}}",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "endTime",
+					"value": "{{endts}}",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1500064295116,
+			"name": "Get HUMIDITY by assetId",
+			"description": "",
+			"collectionId": "c9e0a8ac-fceb-a63d-1fcf-9b9bc5607042",
+			"responses": [],
+			"folder": "6fd72c4e-979d-16ab-1d4c-f9cdc4a621d4"
+		},
+		{
+			"id": "735ed75d-fee8-f603-f2c7-022ebd309c08",
+			"headers": "Authorization: Bearer {{client_token}}\nPredix-Zone-Id: {{traffic_zone_id}}\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer {{client_token}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Predix-Zone-Id",
+					"value": "{{traffic_zone_id}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{eventurl}}/locations/{{traffic_loc}}/events?eventType=TFEVT&startTime={{startts}}&endTime={{endts}}",
+			"queryParams": [
+				{
+					"key": "eventType",
+					"value": "TFEVT",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "startTime",
+					"value": "{{startts}}",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "endTime",
+					"value": "{{endts}}",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1497909212445,
+			"name": "Get TFEVT by locationId",
+			"description": "",
+			"collectionId": "c9e0a8ac-fceb-a63d-1fcf-9b9bc5607042",
+			"responses": [],
+			"folder": "6fd72c4e-979d-16ab-1d4c-f9cdc4a621d4"
+		},
+		{
+			"id": "76613290-f758-2d50-8e8e-96a3124be875",
+			"headers": "Authorization: Bearer {{client_token}}\nPredix-Zone-Id: {{parking_zone_id}}\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer {{client_token}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Predix-Zone-Id",
+					"value": "{{parking_zone_id}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{eventurl}}/assets/{{parking_asset}}/events?eventType=PKIN&startTime={{startts}}&endTime={{endts}}",
+			"queryParams": [
+				{
+					"key": "eventType",
+					"value": "PKIN",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "startTime",
+					"value": "{{startts}}",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "endTime",
+					"value": "{{endts}}",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1497909152831,
+			"name": "Get PKIN by assetId",
+			"description": "",
+			"collectionId": "c9e0a8ac-fceb-a63d-1fcf-9b9bc5607042",
+			"responses": [],
+			"folder": "6fd72c4e-979d-16ab-1d4c-f9cdc4a621d4"
+		},
+		{
+			"id": "8bdf82d9-2845-aa37-375c-262d7ca6de6d",
+			"headers": "Authorization: Bearer {{client_token}}\nPredix-Zone-Id: {{traffic_zone_id}}\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer {{client_token}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Predix-Zone-Id",
+					"value": "{{traffic_zone_id}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{metadataurl}}/locations/search?q=locationType:TRAFFIC_LANE&bbox={{bbox}}&page=0&size=50",
+			"queryParams": [
+				{
+					"key": "q",
+					"value": "locationType:TRAFFIC_LANE",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "bbox",
+					"value": "{{bbox}}",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "page",
+					"value": "0",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "size",
+					"value": "50",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": "",
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1502149096843,
+			"name": "Get All Locations",
+			"description": "",
+			"collectionId": "c9e0a8ac-fceb-a63d-1fcf-9b9bc5607042",
+			"responses": [],
+			"folder": "d4ae9e23-10b1-d0f9-1009-efb650fce96a"
+		},
+		{
+			"id": "8d69fba9-5a0c-bfe5-b170-74e52580e507",
+			"headers": "Authorization: Bearer {{client_token}}\nPredix-Zone-Id: {{ps_zone_id}}\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer {{client_token}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Predix-Zone-Id",
+					"value": "{{ps_zone_id}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{mediaurl}}/ondemand/locations/{{traffic_loc}}/media?mediaType=IMAGE&timestamp={{startts}}",
+			"folder": "802ce125-fe65-2f39-444c-499fe0882ed1",
+			"queryParams": [
+				{
+					"key": "mediaType",
+					"value": "IMAGE",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "timestamp",
+					"value": "{{startts}}",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1508550361126,
+			"name": "(step 1) Get Image mediaOnDemand Location",
+			"description": "",
+			"collectionId": "c9e0a8ac-fceb-a63d-1fcf-9b9bc5607042",
+			"responses": []
+		},
+		{
+			"id": "93bcbda2-3fdd-15a9-2643-d1a9c7750faa",
+			"headers": "Authorization: Bearer {{client_token}}\nPredix-Zone-Id: {{ps_zone_id}}\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer {{client_token}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Predix-Zone-Id",
+					"value": "{{ps_zone_id}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{mediaurl}}/ondemand/assets/{{traffic_asset}}/media?mediaType=IMAGE&timestamp={{startts}}",
+			"queryParams": [
+				{
+					"key": "mediaType",
+					"value": "IMAGE",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "timestamp",
+					"value": "{{startts}}",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1500105122420,
+			"name": "(step 1) Get Image mediaOnDemand Asset",
+			"description": "",
+			"collectionId": "c9e0a8ac-fceb-a63d-1fcf-9b9bc5607042",
+			"responses": [],
+			"folder": "802ce125-fe65-2f39-444c-499fe0882ed1"
+		},
+		{
+			"id": "9c386114-ecf8-e8f5-3255-51a7fdbeb44b",
+			"headers": "Authorization: Bearer {{client_token}}\nPredix-Zone-Id: {{parking_zone_id}}\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer {{client_token}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Predix-Zone-Id",
+					"value": "{{parking_zone_id}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{eventurl}}/locations/events?bbox={{bbox}}&locationType=PARKING_ZONE&eventType=PKOUT&startTime={{startts}}&endTime={{endts}}",
+			"queryParams": [
+				{
+					"key": "bbox",
+					"value": "{{bbox}}",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "locationType",
+					"value": "PARKING_ZONE",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "eventType",
+					"value": "PKOUT",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "startTime",
+					"value": "{{startts}}",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "endTime",
+					"value": "{{endts}}",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1497909190182,
+			"name": "Get PKOUT by bbox",
+			"description": "",
+			"collectionId": "c9e0a8ac-fceb-a63d-1fcf-9b9bc5607042",
+			"responses": [],
+			"folder": "6fd72c4e-979d-16ab-1d4c-f9cdc4a621d4"
+		},
+		{
+			"id": "a1560409-5533-73e4-1c06-97ce78333d95",
+			"headers": "Authorization: Bearer {{client_token}}\nPredix-Zone-Id: {{parking_zone_id}}\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer {{client_token}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Predix-Zone-Id",
+					"value": "{{parking_zone_id}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{eventurl}}/assets/{{parking_asset}}/events?eventType=PKOUT&startTime={{startts}}&endTime={{endts}}",
+			"queryParams": [
+				{
+					"key": "eventType",
+					"value": "PKOUT",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "startTime",
+					"value": "{{startts}}",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "endTime",
+					"value": "{{endts}}",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1497909183261,
+			"name": "Get PKOUT by assetId",
+			"description": "",
+			"collectionId": "c9e0a8ac-fceb-a63d-1fcf-9b9bc5607042",
+			"responses": [],
+			"folder": "6fd72c4e-979d-16ab-1d4c-f9cdc4a621d4"
+		},
+		{
+			"id": "bf6e7bed-ce3d-4392-8522-40b1acc006d1",
+			"headers": "Authorization: Bearer {{client_token}}\nPredix-Zone-Id: {{traffic_zone_id}}\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer {{client_token}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Predix-Zone-Id",
+					"value": "{{traffic_zone_id}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{metadataurl}}/assets/{{traffic_asset}}/locations",
+			"queryParams": [],
+			"preRequestScript": "",
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1502149132625,
+			"name": "Get Asset-->Location list",
+			"description": "",
+			"collectionId": "c9e0a8ac-fceb-a63d-1fcf-9b9bc5607042",
+			"responses": [],
+			"folder": "d4ae9e23-10b1-d0f9-1009-efb650fce96a"
+		},
+		{
+			"id": "c6c88551-b937-aa9b-cde8-16dce1e0120f",
+			"headers": "Authorization: Bearer {{client_token}}\nPredix-Zone-Id: {{ped_zone_id}}\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer {{client_token}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Predix-Zone-Id",
+					"value": "{{ped_zone_id}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{eventurl}}/assets/{{ped_asset}}/events?eventType=PEDEVT&startTime={{startts}}&endTime={{endts}}",
+			"queryParams": [
+				{
+					"key": "eventType",
+					"value": "PEDEVT",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "startTime",
+					"value": "{{startts}}",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "endTime",
+					"value": "{{endts}}",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1497909223701,
+			"name": "Get PEDEVT by assetId",
+			"description": "",
+			"collectionId": "c9e0a8ac-fceb-a63d-1fcf-9b9bc5607042",
+			"responses": [
+				{
+					"request": {
+						"id": "c620c303-2296-4009-8a41-3e22a147959f",
+						"description": "",
+						"method": "GET",
+						"headers": "Authorization: Bearer {{client_token}}\nPredix-Zone-Id: {{ped_zone_id}}",
+						"data": [],
+						"rawModeData": "",
+						"url": "{{eventurl}}/assets/{{ped_asset}}/events?eventType=PEDEVT&startTime=1491634800000&endTime=1491894000000"
+					},
+					"id": "240758cf-778e-cc2c-570b-8757077f2d3d",
+					"name": "PedResponse",
+					"status": "OK",
+					"responseCode": {
+						"code": 200,
+						"name": "OK",
+						"detail": ""
+					},
+					"language": "json",
+					"previewType": "text",
+					"time": 780,
+					"headers": [
+						{
+							"name": "Access-Control-Allow-Credentials",
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true",
+							"description": "Indicates whether or not the response to the request can be exposed when the credentials flag is true. When used as part of a response to a preflight request, this indicates whether or not the actual request can be made using credentials."
+						},
+						{
+							"name": "Access-Control-Allow-Headers",
+							"key": "Access-Control-Allow-Headers",
+							"value": "Origin,Accept,X-Requested-With,Content-Type,Content-Disposition,Access-Control-Request-Method,Access-Control-Request-Headers,Authorization,Predix-Zone-Id,Content-Length,Origin,Accept,X-Requested-With,Content-Type,Access-Control-Request-Method,Access-Control-Request-Headers,Authorization,Predix-Zone-Id",
+							"description": "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+						},
+						{
+							"name": "Access-Control-Allow-Methods",
+							"key": "Access-Control-Allow-Methods",
+							"value": "POST, GET, HEAD, OPTIONS, PUT, PATCH, DELETE,GET,POST,PUT,DELETE,OPTIONS,PATCH",
+							"description": "Specifies the method or methods allowed when accessing the resource. This is used in response to a preflight request."
+						},
+						{
+							"name": "Access-Control-Max-Age",
+							"key": "Access-Control-Max-Age",
+							"value": "3600",
+							"description": "Indicates how long the results of a preflight request can be cached in seconds."
+						},
+						{
+							"name": "Cache-Control",
+							"key": "Cache-Control",
+							"value": "no-cache",
+							"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+						},
+						{
+							"name": "Content-Length",
+							"key": "Content-Length",
+							"value": "13992",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"name": "Content-Security-Policy",
+							"key": "Content-Security-Policy",
+							"value": "child-src 'self'",
+							"description": "Custom header"
+						},
+						{
+							"name": "Content-Type",
+							"key": "Content-Type",
+							"value": "application/json;charset=UTF-8",
+							"description": "The mime type of this content"
+						},
+						{
+							"name": "Date",
+							"key": "Date",
+							"value": "Thu, 13 Apr 2017 17:47:49 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "Expires",
+							"key": "Expires",
+							"value": "0",
+							"description": "Gives the date/time after which the response is considered stale"
+						},
+						{
+							"name": "Pragma",
+							"key": "Pragma",
+							"value": "no-cache",
+							"description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
+						},
+						{
+							"name": "Server",
+							"key": "Server",
+							"value": "Apache-Coyote/1.1",
+							"description": "A name for the server"
+						},
+						{
+							"name": "Strict-Transport-Security",
+							"key": "Strict-Transport-Security",
+							"value": "max-age=16070400",
+							"description": "A HSTS Policy informing the HTTP client how long to cache the HTTPS only policy and whether this applies to subdomains."
+						},
+						{
+							"name": "X-Application-Context",
+							"key": "X-Application-Context",
+							"value": "ie-event-service-ic-dev:cloud:0",
+							"description": "Custom header"
+						},
+						{
+							"name": "X-Content-Type-Options",
+							"key": "X-Content-Type-Options",
+							"value": "nosniff",
+							"description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
+						},
+						{
+							"name": "X-Frame-Options",
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN",
+							"description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
+						},
+						{
+							"name": "X-Vcap-Request-Id",
+							"key": "X-Vcap-Request-Id",
+							"value": "ac9a4296-64fb-4636-5456-3c901f0380b0",
+							"description": "Custom header"
+						},
+						{
+							"name": "X-Xss-Protection",
+							"key": "X-Xss-Protection",
+							"value": "1; mode=block",
+							"description": "Cross-site scripting (XSS) filter"
+						}
+					],
+					"cookies": [],
+					"text": "{\"content\":[{\"locationUid\":\"LOCATION-VPCDEV-30-1077-1-N\",\"assetUid\":\"CAM-HYP1018-F\",\"eventType\":\"PEDEVT\",\"timestamp\":1491859439631,\"properties\":{\"directionUnit\":\"DEGREE\",\"speedUnit\":\"METERS_PER_SEC\",\"eventUid\":\"Q0FNLUhZUDEwMTgtRiwxNDkxODU5NDM5NjMx\"},\"measures\":{\"direction\":-1.0,\"pedestrianCount\":20.0,\"speed\":4.2}},{\"locationUid\":\"LOCATION-VPCDEV-30-1077-1-N\",\"assetUid\":\"CAM-HYP1018-F\",\"eventType\":\"PEDEVT\",\"timestamp\":1491859479631,\"properties\":{\"directionUnit\":\"DEGREE\",\"speedUnit\":\"METERS_PER_SEC\",\"eventUid\":\"Q0FNLUhZUDEwMTgtRiwxNDkxODU5NDc5NjMx\"},\"measures\":{\"direction\":-1.0,\"pedestrianCount\":21.0,\"speed\":4.0}},{\"locationUid\":\"LOCATION-VPCDEV-30-1077-1-N\",\"assetUid\":\"CAM-HYP1018-F\",\"eventType\":\"PEDEVT\",\"timestamp\":1491859511631,\"properties\":{\"directionUnit\":\"DEGREE\",\"speedUnit\":\"METERS_PER_SEC\",\"eventUid\":\"Q0FNLUhZUDEwMTgtRiwxNDkxODU5NTExNjMx\"},\"measures\":{\"direction\":-1.0,\"pedestrianCount\":22.0,\"speed\":4.2272725}},{\"locationUid\":\"LOCATION-VPCDEV-30-1077-1-N\",\"assetUid\":\"CAM-HYP1018-F\",\"eventType\":\"PEDEVT\",\"timestamp\":1491859551631,\"properties\":{\"directionUnit\":\"DEGREE\",\"speedUnit\":\"METERS_PER_SEC\",\"eventUid\":\"Q0FNLUhZUDEwMTgtRiwxNDkxODU5NTUxNjMx\"},\"measures\":{\"direction\":-1.0,\"pedestrianCount\":25.0,\"speed\":4.08}},{\"locationUid\":\"LOCATION-VPCDEV-30-1077-1-N\",\"assetUid\":\"CAM-HYP1018-F\",\"eventType\":\"PEDEVT\",\"timestamp\":1491859591631,\"properties\":{\"directionUnit\":\"DEGREE\",\"speedUnit\":\"METERS_PER_SEC\",\"eventUid\":\"Q0FNLUhZUDEwMTgtRiwxNDkxODU5NTkxNjMx\"},\"measures\":{\"direction\":-1.0,\"pedestrianCount\":22.0,\"speed\":4.409091}},{\"locationUid\":\"LOCATION-VPCDEV-30-1077-1-N\",\"assetUid\":\"CAM-HYP1018-F\",\"eventType\":\"PEDEVT\",\"timestamp\":1491859627631,\"properties\":{\"directionUnit\":\"DEGREE\",\"speedUnit\":\"METERS_PER_SEC\",\"eventUid\":\"Q0FNLUhZUDEwMTgtRiwxNDkxODU5NjI3NjMx\"},\"measures\":{\"direction\":-1.0,\"pedestrianCount\":23.0,\"speed\":3.8695652}},{\"locationUid\":\"LOCATION-VPCDEV-30-1077-1-N\",\"assetUid\":\"CAM-HYP1018-F\",\"eventType\":\"PEDEVT\",\"timestamp\":1491866447631,\"properties\":{\"directionUnit\":\"DEGREE\",\"speedUnit\":\"METERS_PER_SEC\",\"eventUid\":\"Q0FNLUhZUDEwMTgtRiwxNDkxODY2NDQ3NjMx\"},\"measures\":{\"direction\":-1.0,\"pedestrianCount\":33.0,\"speed\":3.7272727}},{\"locationUid\":\"LOCATION-VPCDEV-30-1077-1-N\",\"assetUid\":\"CAM-HYP1018-F\",\"eventType\":\"PEDEVT\",\"timestamp\":1491866487631,\"properties\":{\"directionUnit\":\"DEGREE\",\"speedUnit\":\"METERS_PER_SEC\",\"eventUid\":\"Q0FNLUhZUDEwMTgtRiwxNDkxODY2NDg3NjMx\"},\"measures\":{\"direction\":-1.0,\"pedestrianCount\":33.0,\"speed\":4.060606}},{\"locationUid\":\"LOCATION-VPCDEV-30-1077-1-N\",\"assetUid\":\"CAM-HYP1018-F\",\"eventType\":\"PEDEVT\",\"timestamp\":1491866523631,\"properties\":{\"directionUnit\":\"DEGREE\",\"speedUnit\":\"METERS_PER_SEC\",\"eventUid\":\"Q0FNLUhZUDEwMTgtRiwxNDkxODY2NTIzNjMx\"},\"measures\":{\"direction\":-1.0,\"pedestrianCount\":28.0,\"speed\":3.9642856}},{\"locationUid\":\"LOCATION-VPCDEV-30-1077-1-N\",\"assetUid\":\"CAM-HYP1018-F\",\"eventType\":\"PEDEVT\",\"timestamp\":1491866751631,\"properties\":{\"directionUnit\":\"DEGREE\",\"speedUnit\":\"METERS_PER_SEC\",\"eventUid\":\"Q0FNLUhZUDEwMTgtRiwxNDkxODY2NzUxNjMx\"},\"measures\":{\"direction\":-1.0,\"pedestrianCount\":33.0,\"speed\":3.939394}},{\"locationUid\":\"LOCATION-VPCDEV-30-1077-1-N\",\"assetUid\":\"CAM-HYP1018-F\",\"eventType\":\"PEDEVT\",\"timestamp\":1491866791631,\"properties\":{\"directionUnit\":\"DEGREE\",\"speedUnit\":\"METERS_PER_SEC\",\"eventUid\":\"Q0FNLUhZUDEwMTgtRiwxNDkxODY2NzkxNjMx\"},\"measures\":{\"direction\":-1.0,\"pedestrianCount\":28.0,\"speed\":4.0}},{\"locationUid\":\"LOCATION-VPCDEV-30-1077-1-N\",\"assetUid\":\"CAM-HYP1018-F\",\"eventType\":\"PEDEVT\",\"timestamp\":1491866823631,\"properties\":{\"directionUnit\":\"DEGREE\",\"speedUnit\":\"METERS_PER_SEC\",\"eventUid\":\"Q0FNLUhZUDEwMTgtRiwxNDkxODY2ODIzNjMx\"},\"measures\":{\"direction\":-1.0,\"pedestrianCount\":31.0,\"speed\":4.0}},{\"locationUid\":\"LOCATION-VPCDEV-30-1077-1-N\",\"assetUid\":\"CAM-HYP1018-F\",\"eventType\":\"PEDEVT\",\"timestamp\":1491866859634,\"properties\":{\"directionUnit\":\"DEGREE\",\"speedUnit\":\"METERS_PER_SEC\",\"eventUid\":\"Q0FNLUhZUDEwMTgtRiwxNDkxODY2ODU5NjM0\"},\"measures\":{\"direction\":-1.0,\"pedestrianCount\":31.0,\"speed\":3.6451614}},{\"locationUid\":\"LOCATION-VPCDEV-30-1077-1-N\",\"assetUid\":\"CAM-HYP1018-F\",\"eventType\":\"PEDEVT\",\"timestamp\":1491866891631,\"properties\":{\"directionUnit\":\"DEGREE\",\"speedUnit\":\"METERS_PER_SEC\",\"eventUid\":\"Q0FNLUhZUDEwMTgtRiwxNDkxODY2ODkxNjMx\"},\"measures\":{\"direction\":-1.0,\"pedestrianCount\":33.0,\"speed\":3.909091}},{\"locationUid\":\"LOCATION-VPCDEV-30-1077-1-N\",\"assetUid\":\"CAM-HYP1018-F\",\"eventType\":\"PEDEVT\",\"timestamp\":1491866931631,\"properties\":{\"directionUnit\":\"DEGREE\",\"speedUnit\":\"METERS_PER_SEC\",\"eventUid\":\"Q0FNLUhZUDEwMTgtRiwxNDkxODY2OTMxNjMx\"},\"measures\":{\"direction\":-1.0,\"pedestrianCount\":30.0,\"speed\":3.7}},{\"locationUid\":\"LOCATION-VPCDEV-30-1077-1-N\",\"assetUid\":\"CAM-HYP1018-F\",\"eventType\":\"PEDEVT\",\"timestamp\":1491866967631,\"properties\":{\"directionUnit\":\"DEGREE\",\"speedUnit\":\"METERS_PER_SEC\",\"eventUid\":\"Q0FNLUhZUDEwMTgtRiwxNDkxODY2OTY3NjMx\"},\"measures\":{\"direction\":-1.0,\"pedestrianCount\":32.0,\"speed\":4.25}},{\"locationUid\":\"LOCATION-VPCDEV-30-1077-1-N\",\"assetUid\":\"CAM-HYP1018-F\",\"eventType\":\"PEDEVT\",\"timestamp\":1491867003631,\"properties\":{\"directionUnit\":\"DEGREE\",\"speedUnit\":\"METERS_PER_SEC\",\"eventUid\":\"Q0FNLUhZUDEwMTgtRiwxNDkxODY3MDAzNjMx\"},\"measures\":{\"direction\":-1.0,\"pedestrianCount\":32.0,\"speed\":4.125}},{\"locationUid\":\"LOCATION-VPCDEV-30-1077-1-N\",\"assetUid\":\"CAM-HYP1018-F\",\"eventType\":\"PEDEVT\",\"timestamp\":1491867035631,\"properties\":{\"directionUnit\":\"DEGREE\",\"speedUnit\":\"METERS_PER_SEC\",\"eventUid\":\"Q0FNLUhZUDEwMTgtRiwxNDkxODY3MDM1NjMx\"},\"measures\":{\"direction\":-1.0,\"pedestrianCount\":32.0,\"speed\":3.90625}},{\"locationUid\":\"LOCATION-VPCDEV-30-1077-1-N\",\"assetUid\":\"CAM-HYP1018-F\",\"eventType\":\"PEDEVT\",\"timestamp\":1491867075631,\"properties\":{\"directionUnit\":\"DEGREE\",\"speedUnit\":\"METERS_PER_SEC\",\"eventUid\":\"Q0FNLUhZUDEwMTgtRiwxNDkxODY3MDc1NjMx\"},\"measures\":{\"direction\":-1.0,\"pedestrianCount\":29.0,\"speed\":4.0}},{\"locationUid\":\"LOCATION-VPCDEV-30-1077-1-N\",\"assetUid\":\"CAM-HYP1018-F\",\"eventType\":\"PEDEVT\",\"timestamp\":1491867115631,\"properties\":{\"directionUnit\":\"DEGREE\",\"speedUnit\":\"METERS_PER_SEC\",\"eventUid\":\"Q0FNLUhZUDEwMTgtRiwxNDkxODY3MTE1NjMx\"},\"measures\":{\"direction\":-1.0,\"pedestrianCount\":28.0,\"speed\":3.642857}},{\"locationUid\":\"LOCATION-VPCDEV-30-1077-1-N\",\"assetUid\":\"CAM-HYP1018-F\",\"eventType\":\"PEDEVT\",\"timestamp\":1491867151631,\"properties\":{\"directionUnit\":\"DEGREE\",\"speedUnit\":\"METERS_PER_SEC\",\"eventUid\":\"Q0FNLUhZUDEwMTgtRiwxNDkxODY3MTUxNjMx\"},\"measures\":{\"direction\":-1.0,\"pedestrianCount\":33.0,\"speed\":3.969697}},{\"locationUid\":\"LOCATION-VPCDEV-30-1077-1-N\",\"assetUid\":\"CAM-HYP1018-F\",\"eventType\":\"PEDEVT\",\"timestamp\":1491867191631,\"properties\":{\"directionUnit\":\"DEGREE\",\"speedUnit\":\"METERS_PER_SEC\",\"eventUid\":\"Q0FNLUhZUDEwMTgtRiwxNDkxODY3MTkxNjMx\"},\"measures\":{\"direction\":-1.0,\"pedestrianCount\":33.0,\"speed\":4.181818}},{\"locationUid\":\"LOCATION-VPCDEV-30-1077-1-N\",\"assetUid\":\"CAM-HYP1018-F\",\"eventType\":\"PEDEVT\",\"timestamp\":1491867227631,\"properties\":{\"directionUnit\":\"DEGREE\",\"speedUnit\":\"METERS_PER_SEC\",\"eventUid\":\"Q0FNLUhZUDEwMTgtRiwxNDkxODY3MjI3NjMx\"},\"measures\":{\"direction\":-1.0,\"pedestrianCount\":30.0,\"speed\":4.0666666}},{\"locationUid\":\"LOCATION-VPCDEV-30-1077-1-N\",\"assetUid\":\"CAM-HYP1018-F\",\"eventType\":\"PEDEVT\",\"timestamp\":1491867259631,\"properties\":{\"directionUnit\":\"DEGREE\",\"speedUnit\":\"METERS_PER_SEC\",\"eventUid\":\"Q0FNLUhZUDEwMTgtRiwxNDkxODY3MjU5NjMx\"},\"measures\":{\"direction\":-1.0,\"pedestrianCount\":29.0,\"speed\":4.0689654}},{\"locationUid\":\"LOCATION-VPCDEV-30-1077-1-N\",\"assetUid\":\"CAM-HYP1018-F\",\"eventType\":\"PEDEVT\",\"timestamp\":1491867299631,\"properties\":{\"directionUnit\":\"DEGREE\",\"speedUnit\":\"METERS_PER_SEC\",\"eventUid\":\"Q0FNLUhZUDEwMTgtRiwxNDkxODY3Mjk5NjMx\"},\"measures\":{\"direction\":-1.0,\"pedestrianCount\":33.0,\"speed\":4.030303}},{\"locationUid\":\"LOCATION-VPCDEV-30-1077-1-N\",\"assetUid\":\"CAM-HYP1018-F\",\"eventType\":\"PEDEVT\",\"timestamp\":1491867339631,\"properties\":{\"directionUnit\":\"DEGREE\",\"speedUnit\":\"METERS_PER_SEC\",\"eventUid\":\"Q0FNLUhZUDEwMTgtRiwxNDkxODY3MzM5NjMx\"},\"measures\":{\"direction\":-1.0,\"pedestrianCount\":30.0,\"speed\":3.9666667}},{\"locationUid\":\"LOCATION-VPCDEV-30-1077-1-N\",\"assetUid\":\"CAM-HYP1018-F\",\"eventType\":\"PEDEVT\",\"timestamp\":1491867379631,\"properties\":{\"directionUnit\":\"DEGREE\",\"speedUnit\":\"METERS_PER_SEC\",\"eventUid\":\"Q0FNLUhZUDEwMTgtRiwxNDkxODY3Mzc5NjMx\"},\"measures\":{\"direction\":-1.0,\"pedestrianCount\":32.0,\"speed\":4.21875}},{\"locationUid\":\"LOCATION-VPCDEV-30-1077-1-N\",\"assetUid\":\"CAM-HYP1018-F\",\"eventType\":\"PEDEVT\",\"timestamp\":1491867415631,\"properties\":{\"directionUnit\":\"DEGREE\",\"speedUnit\":\"METERS_PER_SEC\",\"eventUid\":\"Q0FNLUhZUDEwMTgtRiwxNDkxODY3NDE1NjMx\"},\"measures\":{\"direction\":-1.0,\"pedestrianCount\":31.0,\"speed\":4.290323}},{\"locationUid\":\"LOCATION-VPCDEV-30-1077-1-N\",\"assetUid\":\"CAM-HYP1018-F\",\"eventType\":\"PEDEVT\",\"timestamp\":1491867451631,\"properties\":{\"directionUnit\":\"DEGREE\",\"speedUnit\":\"METERS_PER_SEC\",\"eventUid\":\"Q0FNLUhZUDEwMTgtRiwxNDkxODY3NDUxNjMx\"},\"measures\":{\"direction\":-1.0,\"pedestrianCount\":28.0,\"speed\":3.9642856}},{\"locationUid\":\"LOCATION-VPCDEV-30-1077-1-N\",\"assetUid\":\"CAM-HYP1018-F\",\"eventType\":\"PEDEVT\",\"timestamp\":1491867495631,\"properties\":{\"directionUnit\":\"DEGREE\",\"speedUnit\":\"METERS_PER_SEC\",\"eventUid\":\"Q0FNLUhZUDEwMTgtRiwxNDkxODY3NDk1NjMx\"},\"measures\":{\"direction\":-1.0,\"pedestrianCount\":33.0,\"speed\":3.7575758}},{\"locationUid\":\"LOCATION-VPCDEV-30-1077-1-N\",\"assetUid\":\"CAM-HYP1018-F\",\"eventType\":\"PEDEVT\",\"timestamp\":1491867539631,\"properties\":{\"directionUnit\":\"DEGREE\",\"speedUnit\":\"METERS_PER_SEC\",\"eventUid\":\"Q0FNLUhZUDEwMTgtRiwxNDkxODY3NTM5NjMx\"},\"measures\":{\"direction\":-1.0,\"pedestrianCount\":31.0,\"speed\":3.7419355}},{\"locationUid\":\"LOCATION-VPCDEV-30-1077-1-N\",\"assetUid\":\"CAM-HYP1018-F\",\"eventType\":\"PEDEVT\",\"timestamp\":1491867575631,\"properties\":{\"directionUnit\":\"DEGREE\",\"speedUnit\":\"METERS_PER_SEC\",\"eventUid\":\"Q0FNLUhZUDEwMTgtRiwxNDkxODY3NTc1NjMx\"},\"measures\":{\"direction\":-1.0,\"pedestrianCount\":32.0,\"speed\":3.96875}},{\"locationUid\":\"LOCATION-VPCDEV-30-1077-1-N\",\"assetUid\":\"CAM-HYP1018-F\",\"eventType\":\"PEDEVT\",\"timestamp\":1491867615631,\"properties\":{\"directionUnit\":\"DEGREE\",\"speedUnit\":\"METERS_PER_SEC\",\"eventUid\":\"Q0FNLUhZUDEwMTgtRiwxNDkxODY3NjE1NjMx\"},\"measures\":{\"direction\":-1.0,\"pedestrianCount\":30.0,\"speed\":4.0}},{\"locationUid\":\"LOCATION-VPCDEV-30-1077-1-N\",\"assetUid\":\"CAM-HYP1018-F\",\"eventType\":\"PEDEVT\",\"timestamp\":1491867651631,\"properties\":{\"directionUnit\":\"DEGREE\",\"speedUnit\":\"METERS_PER_SEC\",\"eventUid\":\"Q0FNLUhZUDEwMTgtRiwxNDkxODY3NjUxNjMx\"},\"measures\":{\"direction\":-1.0,\"pedestrianCount\":29.0,\"speed\":3.7931035}},{\"locationUid\":\"LOCATION-VPCDEV-30-1077-1-N\",\"assetUid\":\"CAM-HYP1018-F\",\"eventType\":\"PEDEVT\",\"timestamp\":1491867695631,\"properties\":{\"directionUnit\":\"DEGREE\",\"speedUnit\":\"METERS_PER_SEC\",\"eventUid\":\"Q0FNLUhZUDEwMTgtRiwxNDkxODY3Njk1NjMx\"},\"measures\":{\"direction\":-1.0,\"pedestrianCount\":30.0,\"speed\":4.0666666}},{\"locationUid\":\"LOCATION-VPCDEV-30-1077-1-N\",\"assetUid\":\"CAM-HYP1018-F\",\"eventType\":\"PEDEVT\",\"timestamp\":1491867735631,\"properties\":{\"directionUnit\":\"DEGREE\",\"speedUnit\":\"METERS_PER_SEC\",\"eventUid\":\"Q0FNLUhZUDEwMTgtRiwxNDkxODY3NzM1NjMx\"},\"measures\":{\"direction\":-1.0,\"pedestrianCount\":29.0,\"speed\":3.689655}},{\"locationUid\":\"LOCATION-VPCDEV-30-1077-1-N\",\"assetUid\":\"CAM-HYP1018-F\",\"eventType\":\"PEDEVT\",\"timestamp\":1491867767631,\"properties\":{\"directionUnit\":\"DEGREE\",\"speedUnit\":\"METERS_PER_SEC\",\"eventUid\":\"Q0FNLUhZUDEwMTgtRiwxNDkxODY3NzY3NjMx\"},\"measures\":{\"direction\":-1.0,\"pedestrianCount\":28.0,\"speed\":4.035714}},{\"locationUid\":\"LOCATION-VPCDEV-30-1077-1-N\",\"assetUid\":\"CAM-HYP1018-F\",\"eventType\":\"PEDEVT\",\"timestamp\":1491867807631,\"properties\":{\"directionUnit\":\"DEGREE\",\"speedUnit\":\"METERS_PER_SEC\",\"eventUid\":\"Q0FNLUhZUDEwMTgtRiwxNDkxODY3ODA3NjMx\"},\"measures\":{\"direction\":-1.0,\"pedestrianCount\":29.0,\"speed\":3.6551723}},{\"locationUid\":\"LOCATION-VPCDEV-30-1077-1-N\",\"assetUid\":\"CAM-HYP1018-F\",\"eventType\":\"PEDEVT\",\"timestamp\":1491867843631,\"properties\":{\"directionUnit\":\"DEGREE\",\"speedUnit\":\"METERS_PER_SEC\",\"eventUid\":\"Q0FNLUhZUDEwMTgtRiwxNDkxODY3ODQzNjMx\"},\"measures\":{\"direction\":-1.0,\"pedestrianCount\":30.0,\"speed\":4.2}},{\"locationUid\":\"LOCATION-VPCDEV-30-1077-1-N\",\"assetUid\":\"CAM-HYP1018-F\",\"eventType\":\"PEDEVT\",\"timestamp\":1491867883631,\"properties\":{\"directionUnit\":\"DEGREE\",\"speedUnit\":\"METERS_PER_SEC\",\"eventUid\":\"Q0FNLUhZUDEwMTgtRiwxNDkxODY3ODgzNjMx\"},\"measures\":{\"direction\":-1.0,\"pedestrianCount\":31.0,\"speed\":3.8709676}},{\"locationUid\":\"LOCATION-VPCDEV-30-1077-1-N\",\"assetUid\":\"CAM-HYP1018-F\",\"eventType\":\"PEDEVT\",\"timestamp\":1491867915631,\"properties\":{\"directionUnit\":\"DEGREE\",\"speedUnit\":\"METERS_PER_SEC\",\"eventUid\":\"Q0FNLUhZUDEwMTgtRiwxNDkxODY3OTE1NjMx\"},\"measures\":{\"direction\":-1.0,\"pedestrianCount\":29.0,\"speed\":3.9655173}},{\"locationUid\":\"LOCATION-VPCDEV-30-1077-1-N\",\"assetUid\":\"CAM-HYP1018-F\",\"eventType\":\"PEDEVT\",\"timestamp\":1491867955631,\"properties\":{\"directionUnit\":\"DEGREE\",\"speedUnit\":\"METERS_PER_SEC\",\"eventUid\":\"Q0FNLUhZUDEwMTgtRiwxNDkxODY3OTU1NjMx\"},\"measures\":{\"direction\":-1.0,\"pedestrianCount\":33.0,\"speed\":3.7272727}},{\"locationUid\":\"LOCATION-VPCDEV-30-1077-1-N\",\"assetUid\":\"CAM-HYP1018-F\",\"eventType\":\"PEDEVT\",\"timestamp\":1491867995631,\"properties\":{\"directionUnit\":\"DEGREE\",\"speedUnit\":\"METERS_PER_SEC\",\"eventUid\":\"Q0FNLUhZUDEwMTgtRiwxNDkxODY3OTk1NjMx\"},\"measures\":{\"direction\":-1.0,\"pedestrianCount\":31.0,\"speed\":4.225806}},{\"locationUid\":\"LOCATION-VPCDEV-30-1077-1-N\",\"assetUid\":\"CAM-HYP1018-F\",\"eventType\":\"PEDEVT\",\"timestamp\":1491868031631,\"properties\":{\"directionUnit\":\"DEGREE\",\"speedUnit\":\"METERS_PER_SEC\",\"eventUid\":\"Q0FNLUhZUDEwMTgtRiwxNDkxODY4MDMxNjMx\"},\"measures\":{\"direction\":-1.0,\"pedestrianCount\":30.0,\"speed\":3.9}},{\"locationUid\":\"LOCATION-VPCDEV-30-1077-1-N\",\"assetUid\":\"CAM-HYP1018-F\",\"eventType\":\"PEDEVT\",\"timestamp\":1491868075631,\"properties\":{\"directionUnit\":\"DEGREE\",\"speedUnit\":\"METERS_PER_SEC\",\"eventUid\":\"Q0FNLUhZUDEwMTgtRiwxNDkxODY4MDc1NjMx\"},\"measures\":{\"direction\":-1.0,\"pedestrianCount\":33.0,\"speed\":3.7878788}}],\"metaData\":{\"startTs\":\"1491634800000\",\"endTs\":\"1491868075631\",\"request_limit\":1000,\"totalRecords\":45,\"comment\":\"\"}}",
+					"rawDataType": "text",
+					"owner": 0
+				}
+			],
+			"folder": "6fd72c4e-979d-16ab-1d4c-f9cdc4a621d4"
+		},
+		{
+			"id": "d16c9fc5-73a2-fd32-b0f0-a3c2acac9647",
+			"headers": "Authorization: Bearer {{client_token}}\nPredix-Zone-Id: {{traffic_zone_id}}\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer {{client_token}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Predix-Zone-Id",
+					"value": "{{traffic_zone_id}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{metadataurl}}/assets/{{traffic_asset}}",
+			"queryParams": [],
+			"preRequestScript": "",
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1502149168191,
+			"name": "Get Asset Detail",
+			"description": "",
+			"collectionId": "c9e0a8ac-fceb-a63d-1fcf-9b9bc5607042",
+			"responses": [],
+			"folder": "d4ae9e23-10b1-d0f9-1009-efb650fce96a"
+		},
+		{
+			"id": "d60c2aba-e183-21d5-08d4-5d64a329223a",
+			"headers": "Authorization: Bearer {{client_token}}\nPredix-Zone-Id: {{ps_zone_id}}\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer {{client_token}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Predix-Zone-Id",
+					"value": "{{ps_zone_id}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{mediaurl}}/ondemand/assets/{{traffic_asset}}/media?mediaType=AUDIO&timestamp={{startts}}",
+			"queryParams": [
+				{
+					"key": "mediaType",
+					"value": "AUDIO",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "timestamp",
+					"value": "{{startts}}",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1501614089699,
+			"name": "(step 1) Get Audio mediaOnDemand Asset",
+			"description": "",
+			"collectionId": "c9e0a8ac-fceb-a63d-1fcf-9b9bc5607042",
+			"responses": [],
+			"folder": "802ce125-fe65-2f39-444c-499fe0882ed1"
+		},
+		{
+			"id": "db0546bf-39be-b0fe-a3a0-98bb05aa80fb",
+			"headers": "Authorization: Bearer {{client_token}}\nPredix-Zone-Id: {{traffic_zone_id}}\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer {{client_token}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Predix-Zone-Id",
+					"value": "{{traffic_zone_id}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{metadataurl}}/assets/search?bbox={{bbox}}&page=0&size=200&q=assetType:CAMERA",
+			"queryParams": [
+				{
+					"key": "bbox",
+					"value": "{{bbox}}",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "page",
+					"value": "0",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "size",
+					"value": "200",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "q",
+					"value": "assetType:CAMERA",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": "",
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1501885062903,
+			"name": "Get All Assets",
+			"description": "",
+			"collectionId": "c9e0a8ac-fceb-a63d-1fcf-9b9bc5607042",
+			"responses": [],
+			"folder": "d4ae9e23-10b1-d0f9-1009-efb650fce96a"
+		},
+		{
+			"id": "e037d8df-f2c2-caf3-2613-73359f5c6888",
+			"headers": "Authorization: Bearer {{client_token}}\nPredix-Zone-Id: {{parking_zone_id}}\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer {{client_token}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Predix-Zone-Id",
+					"value": "{{parking_zone_id}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{eventurl}}/locations/{{parking_loc}}/events?eventType=PKIN&startTime={{startts}}&endTime={{endts}}",
+			"queryParams": [
+				{
+					"key": "eventType",
+					"value": "PKIN",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "startTime",
+					"value": "{{startts}}",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "endTime",
+					"value": "{{endts}}",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1497909174206,
+			"name": "Get PKIN by locationId",
+			"description": "",
+			"collectionId": "c9e0a8ac-fceb-a63d-1fcf-9b9bc5607042",
+			"responses": [],
+			"folder": "6fd72c4e-979d-16ab-1d4c-f9cdc4a621d4"
+		},
+		{
+			"id": "e76ee703-492a-1af0-8a1f-073a5c062540",
+			"headers": "Authorization: Bearer {{client_token}}\nPredix-Zone-Id: {{ps_zone_id}}\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer {{client_token}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Predix-Zone-Id",
+					"value": "{{ps_zone_id}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{mediaurl}}/ondemand/locations/{{traffic_loc}}/media?mediaType=AUDIO&timestamp={{startts}}",
+			"queryParams": [
+				{
+					"key": "mediaType",
+					"value": "AUDIO",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "timestamp",
+					"value": "{{startts}}",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1501614110907,
+			"name": "(step 1) Get Audio mediaOnDemand Location",
+			"description": "",
+			"collectionId": "c9e0a8ac-fceb-a63d-1fcf-9b9bc5607042",
+			"responses": [],
+			"folder": "802ce125-fe65-2f39-444c-499fe0882ed1"
+		},
+		{
+			"id": "e8f552de-62ff-0606-cce6-3555f7c1c6e4",
+			"headers": "Authorization: Bearer {{client_token}}\nPredix-Zone-Id: {{env_zone_id}}\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer {{client_token}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Predix-Zone-Id",
+					"value": "{{env_zone_id}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{eventurl}}/assets/ENV-ATL-0003-1/events?eventType=TEMPERATURE&startTime={{startts}}&endTime={{endts}}",
+			"queryParams": [
+				{
+					"key": "eventType",
+					"value": "TEMPERATURE",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "startTime",
+					"value": "{{startts}}",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "endTime",
+					"value": "{{endts}}",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1500058530597,
+			"name": "Get TEMPERATURE by assetId",
+			"description": "",
+			"collectionId": "c9e0a8ac-fceb-a63d-1fcf-9b9bc5607042",
+			"responses": [],
+			"folder": "6fd72c4e-979d-16ab-1d4c-f9cdc4a621d4"
+		},
+		{
+			"id": "ebd5edee-6093-d25e-6ad5-bcebb34080ba",
+			"headers": "Authorization: Bearer {{client_token}}\nPredix-Zone-Id: {{ps_zone_id}}\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer {{client_token}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Predix-Zone-Id",
+					"value": "{{ps_zone_id}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "###     PASTE  pollUrl  here   ### ",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1497912088813,
+			"name": "(step 2) After getMedia-paste pollUrl here",
+			"description": "",
+			"collectionId": "c9e0a8ac-fceb-a63d-1fcf-9b9bc5607042",
+			"responses": [],
+			"folder": "802ce125-fe65-2f39-444c-499fe0882ed1"
+		},
+		{
+			"id": "ff342736-dc89-77d5-554f-2c765e0783fc",
+			"headers": "Authorization: Bearer {{client_token}}\nPredix-Zone-Id: {{parking_zone_id}}\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer {{client_token}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Predix-Zone-Id",
+					"value": "{{parking_zone_id}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{eventurl}}/locations/{{parking_loc}}/events?eventType=PKOUT&startTime={{startts}}&endTime={{endts}}",
+			"queryParams": [
+				{
+					"key": "eventType",
+					"value": "PKOUT",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "startTime",
+					"value": "{{startts}}",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "endTime",
+					"value": "{{endts}}",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1497909196061,
+			"name": "Get PKOUT by locationId",
+			"description": "",
+			"collectionId": "c9e0a8ac-fceb-a63d-1fcf-9b9bc5607042",
+			"responses": [],
+			"folder": "6fd72c4e-979d-16ab-1d4c-f9cdc4a621d4"
+		}
+	]
+}
