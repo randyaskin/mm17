@@ -21,62 +21,62 @@
   <template>
     <style include="px-sample-app-styles"></style>
 
-    <px-card class="light-card" header-text="Carbon Nuetrality Goal Year" icon="px-fea:products" full-bleed>
-        <div class="">
-            <px-slider value="2035" end-value="2100" min="2017" max="2100" step="1" scale="linear" base="10" exponent="2" min-label-position="bottom" max-label-position="bottom"></px-slider>                        
-        </div>
-    </px-card>
 
     <div class="spine u-pt">
       <span class="heading--page u-p">{{title}}</span>
       <div class="flex flex--wrap flex--justify">
-        <px-kpi class="kpi1 u-p" title="Cost of Investment" value="65" uom="$" spark-type="bar" spark-data='[57,59,61,63,64,68,72,73,72,68,63,57]'></px-kpi>
-        <px-kpi class="kpi2 u-p" title="Power Consumption" value="22" uom="GWh/yr" spark-type="bar" spark-data='[48,53,38,18,8,3,3,3,3,10,23,51]'></px-kpi>
-        <px-kpi class="kpi3 u-p" title="Renewable Output" value="8" uom="GWh" spark-type="bar" spark-data='[7,8,8,8,8,8,10,9,9,8,8,8]'></px-kpi>
-        <px-kpi class="kpi4 u-p" title="Carbon Offset" value="-8" uom="GWh" spark-type="bar" spark-data='[7,8,8,8,8,8,10,9,9,8,8,8]'></px-kpi>        
+        <px-key-value-pair class="kpi1 u-p" key="Cost of Investment" value="65" uom="$" size="beta"></px-key-value-pair>
+        <px-key-value-pair class="kpi2 u-p" key="Power Consumption" value="22" uom="GWh/yr" size="beta"></px-key-value-pair>
+        <px-key-value-pair class="kpi3 u-p" key="Renewable Output" value="8" uom="GWh" size="beta"></px-key-value-pair>
+        <px-key-value-pair class="kpi4 u-p" key="Carbon Offset" value="-8" uom="GWh" size="beta"></px-key-value-pair>
       </div>
     </div>
 
-    <px-card class="light-card" header-text="New Solar Installations" icon="px-fea:products" full-bleed>
-        <span class="heading--section u-p">New Residential Installs (%)</span>
-        <px-slider value="0" end-value="100" min="0" max="100" step="1" scale="linear" base="10" exponent="2" min-label-position="bottom" max-label-position="bottom"></px-slider>          
-
-        <span class="heading--section u-p">New Commercial Installs (%)</span>
-        <px-slider value="0" end-value="100" min="0" max="100" step="1" scale="linear" base="10" exponent="2" min-label-position="bottom" max-label-position="bottom"></px-slider>          
-
-        <span class="heading--section u-p">New Industrial Installs (%)</span>
-        <px-slider value="0" end-value="100" min="0" max="100" step="1" scale="linear" base="10" exponent="2" min-label-position="bottom" max-label-position="bottom"></px-slider>          
-
+    <px-card class="light-card" header-text="Carbon Nuetrality Goal Year" icon="px-fea:products">
+        <div class="">
+            <px-slider value="2035" end-value="2100" min="2017" max="2100" step="1" scale="linear" base="10" exponent="2" min-label-position="bottom" max-label-position="bottom"></px-slider>
+        </div>
     </px-card>
 
-    
     <!-- This last px-card includes a px-map. -->
     <iron-ajax url="/data/solar_permits.json" handle-as="json" last-response="{{mapData}}" auto></iron-ajax>
-    <px-card class="light-card" header-text="Solar Installations" icon="px-fea:products" full-bleed>
+    <px-card class="light-card" header-text="Solar Installations" icon="px-fea:products">
       <div class='actions'>
         <px-icon icon='px-utl:app-settings'></px-icon>
       </div>
-      <div style="width:100%; height:500px; display:flex;">
-        <px-map class="map1" zoom="12" lat="32.716089" lng="-117.164744" flex-to-size disable-scroll-zoom>
-          <px-map-marker-group name="solar" data="{{mapData}}"></px-map-marker-group>
-          <px-map-tile-layer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png">
-          </px-map-tile-layer>
-        </px-map>
+      <div class="flex flex--row">
+        <div style="flex:0 0 25%;">
+          <span class="u-p">New Residential Installs (%)</span>
+          <px-slider value="0" end-value="100" min="0" max="100" step="1" scale="linear" base="10" exponent="2" min-label-position="bottom" max-label-position="bottom"></px-slider>
+
+          <span class="u-p">New Commercial Installs (%)</span>
+          <px-slider value="0" end-value="100" min="0" max="100" step="1" scale="linear" base="10" exponent="2" min-label-position="bottom" max-label-position="bottom"></px-slider>
+
+          <span class="u-p">New Industrial Installs (%)</span>
+          <px-slider value="0" end-value="100" min="0" max="100" step="1" scale="linear" base="10" exponent="2" min-label-position="bottom" max-label-position="bottom"></px-slider>
+        </div>
+        <div style="flex:0 0 75%;">
+          <px-map style="height:500px;" zoom="11" lat="32.716089" lng="-117.164744" flex-to-size disable-scroll-zoom>
+            <px-map-marker-group name="solar" data="{{mapData}}"></px-map-marker-group>
+            <px-map-tile-layer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png">
+            </px-map-tile-layer>
+          </px-map>
+        </div>
       </div>
     </px-card>
 
     <!-- By placing several px-key-value-pairs in a flex container, we can easily create a "spine" which is a term
          we use for a row of KPIs or other high level information about an asset on the top of a dashboard. -->
 
-         <div class="spine u-pt">
+         <!-- <div class="spine u-pt">
           <span class="heading--page u-p">{{title}}</span>
-    
+
           <div class="flex flex--wrap flex--justify">
             <px-kpi class="kpi1 u-p" title="Avg temp" value="65" uom="ºF" spark-type="bar" spark-data='[57,59,61,63,64,68,72,73,72,68,63,57]'></px-kpi>
             <px-kpi class="kpi2 u-p" title="Avg rainfall" value="22" uom="mm" spark-type="bar" spark-data='[48,53,38,18,8,3,3,3,3,10,23,51]'></px-kpi>
             <px-kpi class="kpi3 u-p" title="Avg sun" value="8" uom="hrs/day" spark-type="bar" spark-data='[7,8,8,8,8,8,10,9,9,8,8,8]'></px-kpi>
           </div>
-        </div>
+        </div> -->
 
   </template>
 </dom-module>
