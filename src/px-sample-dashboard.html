@@ -47,17 +47,17 @@
       <div class="flex flex--row">
         <div style="flex:0 0 25%;">
           <span class="u-p">New Residential Installs (%)</span>
-          <px-slider value="0" end-value="100" min="0" max="100" step="1" scale="linear" base="10" exponent="2" min-label-position="bottom" max-label-position="bottom"></px-slider>
+          <px-slider value="20" min="0" max="100" step="1" scale="linear" base="10" exponent="2" min-label-position="bottom" max-label-position="bottom" on-value-changed="updateMap"></px-slider>
 
           <span class="u-p">New Commercial Installs (%)</span>
-          <px-slider value="0" end-value="100" min="0" max="100" step="1" scale="linear" base="10" exponent="2" min-label-position="bottom" max-label-position="bottom"></px-slider>
+          <px-slider value="40" min="0" max="100" step="1" scale="linear" base="10" exponent="2" min-label-position="bottom" max-label-position="bottom" on-value-changed="updateMap"></px-slider>
 
           <span class="u-p">New Industrial Installs (%)</span>
-          <px-slider value="0" end-value="100" min="0" max="100" step="1" scale="linear" base="10" exponent="2" min-label-position="bottom" max-label-position="bottom"></px-slider>
+          <px-slider value="25" min="0" max="100" step="1" scale="linear" base="10" exponent="2" min-label-position="bottom" max-label-position="bottom" on-value-changed="updateMap"></px-slider>
         </div>
         <div style="flex:0 0 75%;">
           <px-map style="height:500px;" zoom="11" lat="32.716089" lng="-117.164744" flex-to-size disable-scroll-zoom>
-            <px-map-marker-group name="solar" data="{{mapData}}"></px-map-marker-group>
+            <px-map-marker-group id="markers" name="solar" data="{{_mapData}}"></px-map-marker-group>
             <px-map-tile-layer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png">
             </px-map-tile-layer>
           </px-map>
