@@ -1,0 +1,6 @@
+{
+	"ImportPath": "github.build.ge.com/212472270/mm-ts-forecasting",
+	"GoVersion": "go1.9",
+	"GodepVersion": "v79",
+	"Deps": []
+}

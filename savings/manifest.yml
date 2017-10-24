@@ -1,0 +1,8 @@
+---
+applications:
+- name: savings-app
+  disk: 256M
+  memory: 128M
+  buildpack: "https://github.com/cloudfoundry/go-buildpack.git"
+  instances: 2
+
