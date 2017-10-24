@@ -9,7 +9,9 @@
 <link rel="import" href="../bower_components/px-card/px-card.html" />
 <link rel="import" href="../bower_components/px-map/px-map.html" />
 <link rel="import" href="../bower_components/px-map/px-map-tile-layer.html" />
+<link rel="import" href="../bower_components/px-map/px-map-marker-group.html" />
 <link rel="import" href="../bower_components/px-map/px-map-marker-symbol.html" />
+<link rel="import" href="../bower_components/iron-ajax/iron-ajax.html" />
 
 <!-- Load styles -->
 <link rel="import" href="../css/px-sample-app-styles.html" />
@@ -32,13 +34,14 @@
     </div>
 
     <!-- This last px-card includes a px-map. -->
+    <iron-ajax url="/data/solar_permits.json" handle-as="json" last-response="{{mapData}}" auto></iron-ajax>
     <px-card class="light-card" header-text="Solar Installations" icon="px-fea:products" full-bleed>
       <div class='actions'>
         <px-icon icon='px-utl:app-settings'></px-icon>
       </div>
       <div style="width:100%; height:500px; display:flex;">
-        <px-map class="map1" zoom="14" lat="32.716089" lng="-117.164744" flex-to-size disable-scroll-zoom>
-          <px-map-marker-symbol lat="32.716089" lng="-117.164744" type="info" icon="px-obj:solar-panel"></px-map-marker-symbol>
+        <px-map class="map1" zoom="12" lat="32.716089" lng="-117.164744" flex-to-size disable-scroll-zoom>
+          <px-map-marker-group name="solar" data="{{mapData}}"></px-map-marker-group>
           <px-map-tile-layer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png">
           </px-map-tile-layer>
         </px-map>
