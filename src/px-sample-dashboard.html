@@ -12,6 +12,10 @@
 <link rel="import" href="../bower_components/px-map/px-map-marker-group.html" />
 <link rel="import" href="../bower_components/px-map/px-map-marker-symbol.html" />
 <link rel="import" href="../bower_components/px-slider/px-slider.html" />
+<link rel="import" href="../bower_components/px-modal/px-modal.html" />
+<link rel="import" href="../bower_components/px-vis-timeseries/px-vis-timeseries.html" />
+
+
 <link rel="import" href="../bower_components/iron-ajax/iron-ajax.html" />
 
 <!-- Load styles -->
@@ -20,13 +24,34 @@
 <dom-module id="px-sample-dashboard">
   <template>
     <style include="px-sample-app-styles"></style>
-
-
+    
     <div class="spine u-pt">
       <span class="heading--page u-p">{{title}}</span>
       <div class="flex flex--wrap flex--justify">
         <px-key-value-pair class="kpi1 u-p" key="Cost of Investment" value="65" uom="$" size="beta"></px-key-value-pair>
-        <px-key-value-pair class="kpi2 u-p" key="Power Consumption" value="22" uom="GWh/yr" size="beta"></px-key-value-pair>
+        <px-modal btn-modal-positive="BACK">
+            <px-key-value-pair class="kpi2 u-p modal-trigger" key="Power Consumption" value="22" uom="GWh/yr" size="beta"></px-key-value-pair>
+    
+            <px-card class="light-card" header-text="Solar Installations" icon="px-fea:products">
+              <px-vis-timeseries 
+                  debounce-resize-timing="250" 
+                  width="700" 
+                  height="296" 
+                  chart-horizontal-alignment="center" 
+                  chart-vertical-alignment="center" 
+                  margin='{"top":30,"bottom":60,"left":65,"right":65}' 
+                  register-config='{"type":"horizontal"}' 
+                  selection-type="xy" 
+                  chart-data="[[chartData]]" 
+                  series-config='{"y0":{"name":"y0","x":"timeStamp","y":"y0","yAxisUnit":"F","axis":{"id":"axis1","side":"left","number":"1"}},"y1":{"name":"y1","x":"timeStamp","y":"y1","yAxisUnit":"Hz","axis":{"id":"axis2","side":"right","number":"1"}},"y2":{"name":"y2","x":"timeStamp","y":"y2","yAxisUnit":"C","axis":{"id":"axis3","side":"left","number":"2"}},"y3":{"name":"y3","x":"timeStamp","y":"y3","yAxisUnit":"F","axis":{"id":"axis4","side":"right","number":"2"}}}' 
+                  chart-extents='{"x":["dynamic","dynamic"],"y":["dynamic","dynamic"]}' 
+                  x-axis-config='{"title":"Date"}' 
+                  y-axis-config='{"title":"Single","titleTruncation":false,"unit":"F","axis1":{"title":"Temperature","titleTruncation":false,"unit":"C"}}' 
+                  disable-navigator>
+              </px-vis-timeseries>
+            </px-card>  
+      </px-modal>
+      
         <px-key-value-pair class="kpi3 u-p" key="Renewable Output" value="8" uom="GWh" size="beta"></px-key-value-pair>
         <px-key-value-pair class="kpi4 u-p" key="Carbon Offset" value="-8" uom="GWh" size="beta"></px-key-value-pair>
       </div>
@@ -37,7 +62,7 @@
             <px-slider value="2035" end-value="2100" min="2017" max="2100" step="1" scale="linear" base="10" exponent="2" min-label-position="bottom" max-label-position="bottom"></px-slider>
         </div>
     </px-card>
-
+    
     <!-- This last px-card includes a px-map. -->
     <iron-ajax url="/data/solar_permits.json" handle-as="json" last-response="{{mapData}}" auto></iron-ajax>
     <px-card class="light-card" header-text="Solar Installations" icon="px-fea:products">
@@ -47,17 +72,17 @@
       <div class="flex flex--row">
         <div style="flex:0 0 25%;">
           <span class="u-p">New Residential Installs (%)</span>
-          <px-slider value="20" min="0" max="100" step="1" scale="linear" base="10" exponent="2" min-label-position="bottom" max-label-position="bottom" on-value-changed="updateMap"></px-slider>
+          <px-slider value="0" end-value="100" min="0" max="100" step="1" scale="linear" base="10" exponent="2" min-label-position="bottom" max-label-position="bottom"></px-slider>
 
           <span class="u-p">New Commercial Installs (%)</span>
-          <px-slider value="40" min="0" max="100" step="1" scale="linear" base="10" exponent="2" min-label-position="bottom" max-label-position="bottom" on-value-changed="updateMap"></px-slider>
+          <px-slider value="0" end-value="100" min="0" max="100" step="1" scale="linear" base="10" exponent="2" min-label-position="bottom" max-label-position="bottom"></px-slider>
 
           <span class="u-p">New Industrial Installs (%)</span>
-          <px-slider value="25" min="0" max="100" step="1" scale="linear" base="10" exponent="2" min-label-position="bottom" max-label-position="bottom" on-value-changed="updateMap"></px-slider>
+          <px-slider value="0" end-value="100" min="0" max="100" step="1" scale="linear" base="10" exponent="2" min-label-position="bottom" max-label-position="bottom"></px-slider>
         </div>
         <div style="flex:0 0 75%;">
           <px-map style="height:500px;" zoom="11" lat="32.716089" lng="-117.164744" flex-to-size disable-scroll-zoom>
-            <px-map-marker-group id="markers" name="solar" data="{{_mapData}}"></px-map-marker-group>
+            <px-map-marker-group name="solar" data="{{mapData}}"></px-map-marker-group>
             <px-map-tile-layer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png">
             </px-map-tile-layer>
           </px-map>
