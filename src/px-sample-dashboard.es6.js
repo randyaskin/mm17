@@ -15,7 +15,7 @@
       _mapData: {
         type: Object,
         value: function() {
-          return {};
+          return this.mapData;
         }
       }
     },
@@ -26,6 +26,7 @@
       markers.update();
     },
     updateMap(evt) {
+      if(evt.detail.value === 0) return;
       var percent = 800 * parseInt(evt.detail.value) / 100;
       var arr = this.mapData.features.slice(0, percent);
       this.set('_mapData.type', 'FeatureCollection');
