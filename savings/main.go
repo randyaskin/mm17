@@ -20,6 +20,7 @@ type savingsReport struct {
 }
 
 var sdEnergyHistorical = []float64{14395.6602, 13768.9679, 14501.41184, 14421.33019, 14733.81518, 14898.06997, 15359.51847, 15979.35501, 15489.09043, 13984.35539, 17475.61581, 16741.03086, 17120.1648, 17772.47179, 18706.83082, 18714.43401, 19664.75597, 19638.47435, 19994.82863, 19515.30326, 18978.25227, 19022.59425, 19562.03057, 19425.7796, 19903.80127, 19781.17809}
+var r *regression.Regression
 
 type DataPoint struct {
 	Year   int     `json:"Year"`
@@ -36,20 +37,20 @@ const (
 	indEnergyPerInstall = 108800
 )
 
-// const (
-// 	resCostPerInstall = 13824 // 4 kwH
-// 	comCostPerInstall = 55296 // 16 kWh
-// 	indCostPerInstall = 82944 // 24 kWh
-
-// 	resEnergyPerInstall = 3400
-// 	comEnergyPerInstall = 13600
-// 	indEnergyPerInstall = 20400
-// )
-
 var historicalConsumption []DataPoint
 var currentYear = 2015
 
 func main() {
+	// train model on startup
+	r = new(regression.Regression)
+	r.SetObserved("City of San Diego Energy usage")
+	r.SetVar(0, "Year")
+	r.SetVar(1, "Energy consumption in GWh")
+	for i, year := range sdEnergyHistorical {
+		r.Train(regression.DataPoint(year, []float64{float64(i + 1990)}))
+	}
+	r.Run()
+
 	startYear := 1990
 	for i, val := range sdEnergyHistorical {
 		historicalConsumption = append(historicalConsumption, DataPoint{
@@ -110,8 +111,6 @@ func savingsHandler(w http.ResponseWriter, r *http.Request) {
 		// HistoricalConsumption: historicalConsumption,
 	}
 
-	fmt.Println("sr", sr)
-
 	respBytes, err := json.Marshal(sr)
 	if err != nil {
 		w.WriteHeader(500)
@@ -131,28 +130,19 @@ func getSolarGeneration(resCount, comCount, indCount int) int {
 }
 
 func getPredictedConsumption(targetYear int) (float64, error) {
-	years := targetYear - currentYear
-	r := new(regression.Regression)
-	r.SetObserved("City of San Diego Energy usage")
-	r.SetVar(0, "Year")
-	r.SetVar(1, "Energy consumption in GWh")
-	for i, year := range sdEnergyHistorical {
-		r.Train(regression.DataPoint(year, []float64{float64(i + 1990)}))
-	}
-	r.Run()
-
-	var forecastedYears []DataPoint
-	for i := 0; i < years; i++ {
-		year := currentYear + i
-		fc, err := r.Predict([]float64{float64(year)})
-		if err != nil {
-			return 0, err
-		}
-		forecastedYears = append(forecastedYears, DataPoint{
-			Year:   year,
-			Energy: fc,
-		})
-	}
+	// years := targetYear - currentYear
+	// var forecastedYears []DataPoint
+	// for i := 0; i < years; i++ {
+	// 	year := currentYear + i
+	// 	fc, err := r.Predict([]float64{float64(year)})
+	// 	if err != nil {
+	// 		return 0, err
+	// 	}
+	// 	forecastedYears = append(forecastedYears, DataPoint{
+	// 		Year:   year,
+	// 		Energy: fc,
+	// 	})
+	// }
 
 	fc, err := r.Predict([]float64{float64(targetYear)})
 	if err != nil {
