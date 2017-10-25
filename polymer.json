@@ -2,9 +2,7 @@
   "entrypoint": "index.html",
   "shell": "src/px-sample-app.html",
   "fragments": [
-    "src/px-sample-dashboard.html",
-    "src/px-sample-inbox.html",
-    "src/px-sample-layout.html"
+    "src/px-sample-dashboard.html"
   ],
   "sources": [
     "src/**/*",
