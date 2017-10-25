@@ -1349,6 +1349,48 @@
         value: function() {
           return this.mapData;
         }
+      },
+      _costOfInvestment: {
+        type: Number,
+        value: 0
+      },
+      _powerConsumption: {
+        type: Number,
+        value: 0
+      },
+      _renewableOutput: {
+        type: Number,
+        value: 0
+      },
+      _carbonOffset: {
+        type: Number,
+        value: 0
+      },
+      _savingsResponse: {
+        type: Object,
+        value: function() {
+          return {};
+        }
+      },
+      _carbonNuetralDate: {
+        type: Number,
+        value: 2035,
+        observer: 'sliderChanged'
+      },
+      _residentialSliderPercentage: {
+        type: Number,
+        value: 0,
+        observer: 'sliderChanged'
+      },
+      _commercialSliderPercentage: {
+        type: Number,
+        value: 0,
+        observer: 'sliderChanged'
+      },
+      _industrialSliderPercentage: {
+        type: Number,
+        value: 0,
+        observer: 'sliderChanged'
       }
     },
     attached() {
@@ -1366,6 +1408,25 @@
       var markers = this.$.markers;
       markers.set('data', this._mapData);
       markers.update();
+    },
+    handleSavingsResponse(e) {      
+      this._powerConsumption = (this._savingsResponse.PredictedConsumptionKWH / 1000000).toFixed(0);
+      this._renewableOutput = (this._savingsResponse.SolarEnergyGenerationKWH / 1000000).toFixed(0);
+      this._costOfInvestment = (this._savingsResponse.InitialCost / 1000000).toFixed(3);
+      this._carbonOffset = (this._savingsResponse.SolarOffsetKWH / 1000000).toFixed(0);
+    },
+    sliderChanged(e) {
+      console.log("world");
+      var base = "https://savings-app.run.aws-usw02-pr.ice.predix.io";
+
+      var res = this._residentialSliderPercentage;
+      var com = this._commercialSliderPercentage;
+      var ind = this._industrialSliderPercentage;
+      var cn = this._carbonNuetralDate;
+
+      this.$.savingsCalc.url = base + "/v1/savings?com=" + com + "&res=" + res + "&ind=" + ind + "&targetYear=" + cn;
+      console.log(this.$.savingsCalc.url)
+      this.$.savingsCalc.generateRequest();
     }
   });
 })();

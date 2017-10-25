@@ -61,10 +61,12 @@ func main() {
 	}
 
 	http.HandleFunc("/v1/savings", savingsHandler)
+	http.HandleFunc("/v1/subsidy", subsidyHandler)
 	err := http.ListenAndServe(":"+os.Getenv("PORT"), nil)
 	if err != nil {
 		log.Fatal("ListenAndServe:", err)
 	}
+
 }
 
 func savingsHandler(w http.ResponseWriter, r *http.Request) {
@@ -109,6 +111,54 @@ func savingsHandler(w http.ResponseWriter, r *http.Request) {
 		PredictedConsumption:  predictedConsumption,
 		SolarOffset:           predictedConsumption - float64(solarGeneration),
 		// HistoricalConsumption: historicalConsumption,
+	}
+
+	respBytes, err := json.Marshal(sr)
+	if err != nil {
+		w.WriteHeader(500)
+		w.Write([]byte(fmt.Sprintf("Error occurred: %v", err)))
+		return
+	}
+
+	w.Write(respBytes)
+}
+
+func subsidyHandler(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+
+	cnYear, err := strconv.Atoi(r.URL.Query().Get("cn"))
+	if err != nil {
+		w.WriteHeader(500)
+		w.Write([]byte(fmt.Sprintf("Error occurred: %v", err)))
+		return
+	}
+	comCount, err := strconv.Atoi(r.URL.Query().Get("com"))
+	if err != nil {
+		w.WriteHeader(500)
+		w.Write([]byte(fmt.Sprintf("Error occurred: %v", err)))
+		return
+	}
+	resCount, err := strconv.Atoi(r.URL.Query().Get("res"))
+	if err != nil {
+		w.WriteHeader(500)
+		w.Write([]byte(fmt.Sprintf("Error occurred: %v", err)))
+		return
+	}
+	indCount, err := strconv.Atoi(r.URL.Query().Get("ind"))
+	if err != nil {
+		w.WriteHeader(500)
+		w.Write([]byte(fmt.Sprintf("Error occurred: %v", err)))
+		return
+	}
+
+	totalConsumption := 2000000000
+	solarGeneration := getSolarGeneration(comCount, resCount, indCount)
+	sr := savingsReport{
+		InitialCost:           getInitialCost(comCount, resCount, indCount),
+		TotalCityConsumption:  totalConsumption,
+		SolarEnergyGeneration: solarGeneration,
+		EnergyOffset:          totalConsumption - solarGeneration,
 	}
 
 	respBytes, err := json.Marshal(sr)
@@ -167,4 +217,21 @@ func getPredictedConsumption(targetYear int) (float64, error) {
 // 		Year:   year,
 // 		Energy: fc,
 // 	})
+
+// func getZeroEnergyOffset(totalConsumption int, cnDate int, subsidy float64) int {
+// 	dateRange := cnDate - 2017
+
+// 	totPop := 1073089
+
+// 	percByIncome := [5.9,4.8,8.7,8.2,12,16.9,13,15.8,7.4]
+
+// 	popByIncome := []
+// 	for i, val := range percByIncome {
+//         popByIncome = append(popByIncome, DataPoint{
+//             Year:   startYear + i,
+//             Energy: val,
+//         })
+//     }
+
+// 	return 0
 // }

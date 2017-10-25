@@ -28,9 +28,9 @@
     <div class="spine u-pt">
       <span class="heading--page u-p">{{title}}</span>
       <div class="flex flex--wrap flex--justify">
-        <px-key-value-pair class="kpi1 u-p" key="Cost of Investment" value="65" uom="$" size="beta"></px-key-value-pair>
+        <px-key-value-pair class="kpi1 u-p" key="Cost of Investment" value=[[_costOfInvestment]] uom="$ in Millions" size="beta"></px-key-value-pair>
         <px-modal btn-modal-positive="BACK">
-          <px-key-value-pair class="kpi2 u-p modal-trigger" key="Power Consumption" value="22" uom="GWh/yr" size="beta"></px-key-value-pair>
+          <px-key-value-pair class="kpi2 u-p modal-trigger" key="Power Consumption" value=[[_powerConsumption]] uom="GWh/yr" size="beta"></px-key-value-pair>
 
           <px-card class="light-card" header-text="Solar Installations" icon="px-fea:products">
             <px-vis-timeseries debounce-resize-timing="250" width="700" height="296" chart-horizontal-alignment="center" chart-vertical-alignment="center"
@@ -42,20 +42,21 @@
           </px-card>
         </px-modal>
 
-        <px-key-value-pair class="kpi3 u-p" key="Renewable Output" value="8" uom="GWh" size="beta"></px-key-value-pair>
-        <px-key-value-pair class="kpi4 u-p" key="Carbon Offset" value="-8" uom="GWh" size="beta"></px-key-value-pair>
+        <px-key-value-pair class="kpi3 u-p" key="Renewable Output" value=[[_renewableOutput]] uom="GWh" size="beta"></px-key-value-pair>
+        <px-key-value-pair class="kpi4 u-p" key="Carbon Offset" value=[[_carbonOffset]] uom="GWh" size="beta"></px-key-value-pair>
       </div>
     </div>
 
     <px-card class="light-card" header-text="Carbon Nuetrality Goal Year" icon="px-fea:products">
       <div class="">
-        <px-slider value="2035" end-value="2100" min="2017" max="2100" step="1" scale="linear" base="10" exponent="2" min-label-position="bottom"
+        <px-slider value={{_carbonNuetralDate}} end-value="2100" min="2017" max="2100" step="1" scale="linear" base="10" exponent="2" min-label-position="bottom"
           max-label-position="bottom"></px-slider>
       </div>
     </px-card>
 
     <!-- This last px-card includes a px-map. -->
     <iron-ajax url="/data/solar_permits.json" handle-as="json" last-response="{{mapData}}" auto></iron-ajax>
+    <iron-ajax id="savingsCalc" url="" handle-as="json" last-response="{{_savingsResponse}}" on-response="handleSavingsResponse" auto></iron-ajax>
     <px-card class="light-card" header-text="Solar Installations" icon="px-fea:products">
       <div class='actions'>
         <px-icon icon='px-utl:app-settings'></px-icon>
@@ -63,15 +64,15 @@
       <div class="flex flex--row">
         <div style="flex:0 0 25%;">
           <span class="u-p">New Residential Installs (%)</span>
-          <px-slider value="20" end-value="100" min="0" max="100" step="1" scale="linear" base="10" exponent="2" min-label-position="bottom"
+          <px-slider value={{_residentialSliderPercentage}} end-value="100" min="0" max="100" step="5" scale="linear" base="10" exponent="2" min-label-position="bottom"
             max-label-position="bottom" on-value-changed="updateMap"></px-slider>
 
           <span class="u-p">New Commercial Installs (%)</span>
-          <px-slider value="50" end-value="100" min="0" max="100" step="1" scale="linear" base="10" exponent="2" min-label-position="bottom"
+          <px-slider value={{_commercialSliderPercentage}} end-value="100" min="0" max="100" step="5" scale="linear" base="10" exponent="2" min-label-position="bottom"
             max-label-position="bottom" on-value-changed="updateMap"></px-slider>
 
           <span class="u-p">New Industrial Installs (%)</span>
-          <px-slider value="35" end-value="100" min="0" max="100" step="1" scale="linear" base="10" exponent="2" min-label-position="bottom"
+          <px-slider value={{_industrialSliderPercentage}} end-value="100" min="0" max="100" step="5" scale="linear" base="10" exponent="2" min-label-position="bottom"
             max-label-position="bottom" on-value-changed="updateMap"></px-slider>
         </div>
         <div style="flex:0 0 75%;">
