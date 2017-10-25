@@ -26,7 +26,8 @@
     "px-kpi": "^2.0.5",
     "px-slider": "^2.0.4",
     "px-modal": "^2.0.6",
-    "px-vis-pie-chart": "^2.1.3"
+    "px-vis-pie-chart": "^2.1.3",
+    "px-icon-set": "^2.0.17"
   },
   "devDependencies": {
     "web-component-tester": "^5.0.0",

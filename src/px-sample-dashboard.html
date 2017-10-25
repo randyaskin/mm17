@@ -14,7 +14,9 @@
 <link rel="import" href="../bower_components/px-slider/px-slider.html" />
 <link rel="import" href="../bower_components/px-modal/px-modal.html" />
 <link rel="import" href="../bower_components/px-vis-timeseries/px-vis-timeseries.html" />
-<link rel="import" href="../bower_components/px-vis-pie-chart/px-vis-pie-chart.html" />
+<<<<<<< HEAD <link rel="import" href="../bower_components/px-vis-pie-chart/px-vis-pie-chart.html" /> =======
+<link rel="import" href="/bower_components/px-icon-set/px-icon-set.html" />
+<link rel="import" href="/bower_components/px-icon-set/px-icon.html" /> >>>>>>> 21af3eaa1d2093b901fffa644daa4ea943bb9a65
 
 
 <link rel="import" href="../bower_components/iron-ajax/iron-ajax.html" />
@@ -26,14 +28,17 @@
   <template>
     <style include="px-sample-app-styles"></style>
 
-    <iron-ajax url="https://regression.run.aws-usw02-pr.ice.predix.io/ts/predict/Dromore" method="POST" content-type="application/json" body='{"unit":"hr","times":5,"startDate":"7-Nov-2017 12:00","temperatures":[12.2,11.9,11,10,9]}' handle-as="json" last-response="{{chartData}}" auto></iron-ajax>
+    <iron-ajax url="https://regression.run.aws-usw02-pr.ice.predix.io/ts/predict/Dromore" method="POST" content-type="application/json"
+      body='{"unit":"hr","times":5,"startDate":"7-Nov-2017 12:00","temperatures":[12.2,11.9,11,10,9]}' handle-as="json" last-response="{{chartData}}"
+      auto></iron-ajax>
 
     <div class="spine u-pt">
       <span class="heading--page u-p">{{title}}</span>
       <div class="flex flex--wrap flex--justify">
         <px-key-value-pair class="kpi1 u-p" key="Cost of Investment" value=[[_costOfInvestment]] uom="$ in Millions" size="gamma"></px-key-value-pair>
         <px-modal btn-modal-positive="BACK">
-          <px-key-value-pair class="actionable kpi2 u-p modal-trigger" key="Power Consumption" value=[[_powerConsumption]] uom="GWh/yr" size="gamma"></px-key-value-pair>
+          <px-key-value-pair class="actionable kpi2 u-p modal-trigger" key="Power Consumption" value=[[_powerConsumption]] uom="GWh/yr"
+            size="gamma"></px-key-value-pair>
 
           <px-card class="light-card" header-text="Regression Model" icon="px-fea:products">
             <px-vis-timeseries debounce-resize-timing="250" width="700" height="296" chart-horizontal-alignment="center" chart-vertical-alignment="center"
@@ -46,20 +51,21 @@
         </px-modal>
 
         <px-key-value-pair class="kpi3 u-p" key="Renewable Output" value=[[_renewableOutput]] uom="GWh" size="gamma"></px-key-value-pair>
-        <px-key-value-pair class="kpi4 u-p" key="Carbon Offset" value=[[_carbonOffset]] uom="GWh" size="gamma"></px-key-value-pair>
+        <px-key-value-pair id="kpi4" class="kpi4 u-p" key="Net Consumption" value=[[_carbonOffset]] uom="GWh" size="gamma"></px-key-value-pair>
       </div>
     </div>
 
     <px-card class="light-card" header-text="Carbon Nuetrality Goal Year" icon="px-fea:products">
       <div class="">
-        <px-slider value={{_carbonNuetralDate}} end-value="2100" min="2017" max="2100" step="1" scale="linear" base="10" exponent="2" min-label-position="bottom"
-          max-label-position="bottom"></px-slider>
+        <px-slider value={{_carbonNuetralDate}} end-value="2100" min="2017" max="2100" step="1" scale="linear" base="10" exponent="2"
+          min-label-position="bottom" max-label-position="bottom"></px-slider>
       </div>
     </px-card>
 
     <!-- This last px-card includes a px-map. -->
     <iron-ajax url="solar_permits.json" handle-as="json" last-response="{{mapData}}" auto></iron-ajax>
-    <iron-ajax id="savingsCalc" url="" handle-as="json" last-response="{{_savingsResponse}}" on-response="handleSavingsResponse" auto></iron-ajax>
+    <iron-ajax id="savingsCalc" url="" handle-as="json" last-response="{{_savingsResponse}}" on-response="handleSavingsResponse"
+      auto></iron-ajax>
     <px-card class="light-card" header-text="Solar Installations" icon="px-fea:products">
       <div class='actions'>
         <px-icon icon='px-utl:app-settings'></px-icon>
@@ -67,16 +73,16 @@
       <div class="flex flex--row">
         <div style="flex:0 0 25%;">
           <span class="u-p">New Residential Installs (%)</span>
-          <px-slider id="res" value={{_residentialSliderPercentage}} end-value="100" min="0" max="100" step="5" scale="linear" base="10" exponent="2" min-label-position="bottom"
-            max-label-position="bottom" on-value-changed="updateMap"></px-slider>
+          <px-slider id="res" value={{_residentialSliderPercentage}} end-value="100" min="0" max="100" step="5" scale="linear" base="10"
+            exponent="2" min-label-position="bottom" max-label-position="bottom" on-value-changed="updateMap"></px-slider>
 
           <span class="u-p">New Commercial Installs (%)</span>
-          <px-slider id="com" value={{_commercialSliderPercentage}} end-value="100" min="0" max="100" step="5" scale="linear" base="10" exponent="2" min-label-position="bottom"
-            max-label-position="bottom" on-value-changed="updateMap"></px-slider>
+          <px-slider id="com" value={{_commercialSliderPercentage}} end-value="100" min="0" max="100" step="5" scale="linear" base="10"
+            exponent="2" min-label-position="bottom" max-label-position="bottom" on-value-changed="updateMap"></px-slider>
 
           <span class="u-p">New Industrial Installs (%)</span>
-          <px-slider id="ind" value={{_industrialSliderPercentage}} end-value="100" min="0" max="100" step="5" scale="linear" base="10" exponent="2" min-label-position="bottom"
-            max-label-position="bottom" on-value-changed="updateMap"></px-slider>
+          <px-slider id="ind" value={{_industrialSliderPercentage}} end-value="100" min="0" max="100" step="5" scale="linear" base="10"
+            exponent="2" min-label-position="bottom" max-label-position="bottom" on-value-changed="updateMap"></px-slider>
         </div>
         <div style="flex:0 0 75%;">
           <px-map style="height:500px;" zoom="11" lat="32.716089" lng="-117.164744" flex-to-size disable-scroll-zoom>
@@ -88,22 +94,61 @@
       </div>
     </px-card>
 
+    <px-card class="light-card" header-text="Estimated Solar Installations By Income" icon="px-vis:closest-point-series">
+      <div class="flex flex--justify">
+        <div>
+          <px-icon class="center-icon" icon="px-nav:generic-user"></px-icon>
+          <px-key-value-pair class="kpi1 u-p" key="Less than $10,000" value=[[_inc1Perc]] uom="%" size="delta"></px-key-value-pair>
+          <px-key-value-pair class="kpi1 u-p" value=[[_inc1]] uom="People" size="delta"></px-key-value-pair>
+        </div>
+        <div>
+          <px-icon class="center-icon" icon="px-nav:generic-user"></px-icon>
+          <px-key-value-pair class="kpi2 u-p" key="$10,000 to $14,999" value=[[_inc2Perc]] uom="%" size="delta"></px-key-value-pair>
+          <px-key-value-pair class="kpi2 u-p" value=[[_inc2]] uom="People" size="delta"></px-key-value-pair>
+        </div>
+        <div>
+          <px-icon class="center-icon" icon="px-nav:generic-user"></px-icon>
+          <px-key-value-pair class="kpi3 u-p" key="$15,000 to $24,999" value=[[_inc3Perc]] uom="%" size="delta"></px-key-value-pair>
+          <px-key-value-pair class="kpi3 u-p" value=[[_inc3]] uom="People" size="delta"></px-key-value-pair>
+        </div>
+        <div>
+          <px-icon class="center-icon" icon="px-nav:generic-user"></px-icon>
+          <px-key-value-pair class="kpi4 u-p" key="$25,000 to $34,999" value=[[_inc4Perc]] uom="%" size="delta"></px-key-value-pair>
+          <px-key-value-pair class="kpi4 u-p" value=[[_inc4]] uom="People" size="delta"></px-key-value-pair>
+        </div>
+        <div>
+          <px-icon class="center-icon" icon="px-nav:generic-user"></px-icon>
+          <px-key-value-pair class="kpi5 u-p" key="$35,000 to $49,999" value=[[_inc5Perc]] uom="%" size="delta"></px-key-value-pair>
+          <px-key-value-pair class="kpi5 u-p" value=[[_inc5]] uom="People" size="delta"></px-key-value-pair>
+        </div>
+        <div>
+          <px-icon class="center-icon" icon="px-nav:generic-user"></px-icon>
+          <px-key-value-pair class="kpi6 u-p" key="$50,000 to $74,999" value=[[_inc6Perc]] uom="%" size="delta"></px-key-value-pair>
+          <px-key-value-pair class="kpi6 u-p" value=[[_inc6]] uom="People" size="delta"></px-key-value-pair>
+        </div>
+        <div>
+          <px-icon class="center-icon" icon="px-nav:generic-user"></px-icon>
+          <px-key-value-pair class="kpi7 u-p" key="$75,000 to $99,999" value=[[_inc7Perc]] uom="%" size="delta"></px-key-value-pair>
+          <px-key-value-pair class="kpi7 u-p" value=[[_inc7]] uom="People" size="delta"></px-key-value-pair>
+        </div>
+        <div>
+          <px-icon class="center-icon" icon="px-nav:generic-user"></px-icon>
+          <px-key-value-pair class="kpi8 u-p" key="$100,000 to $149,999" value=[[_inc8Perc]] uom="%" size="delta"></px-key-value-pair>
+          <px-key-value-pair class="kpi8 u-p" value=[[_inc8]] uom="People" size="delta"></px-key-value-pair>
+        </div>
+        <div>
+          <px-icon class="center-icon" icon="px-nav:generic-user"></px-icon>
+          <px-key-value-pair class="kpi9 u-p" key="$150,000+" value=[[_inc9Perc]] uom="%" size="delta"></px-key-value-pair>
+          <px-key-value-pair class="kpi9 u-p" value=[[_inc9]] uom="People" size="delta"></px-key-value-pair>
+        </div>
+      </div>
+    </px-card>
+
     <px-card header-text="San Diego Budget" icon="px-fea:analysis">
-      <px-vis-pie-chart
-      prevent-resize
-      width="450"
-      height="450"
-      chart-horizontal-alignment="center"
-      chart-vertical-alignment="center"
-      margin='{"top":"10","bottom":"10","left":"0","right":"0"}'
-      register-config='{"type":"vertical","width":400,"truncationLength":"100"}'
-      chart-data="[[pieChartData]]"
-      series-config='{"mySerie":{"xAxisUnit":"million","y":"y","x":"x"}}'
-      preserve-data-order
-      inner-radius="0"
-      title="Total"
-      title-spacing="5"
-      decimal-percentage="0">
+      <px-vis-pie-chart prevent-resize width="450" height="450" chart-horizontal-alignment="center" chart-vertical-alignment="center"
+        margin='{"top":"10","bottom":"10","left":"0","right":"0"}' register-config='{"type":"vertical","width":400,"truncationLength":"100"}'
+        chart-data="[[pieChartData]]" series-config='{"mySerie":{"xAxisUnit":"million","y":"y","x":"x"}}' preserve-data-order
+        inner-radius="0" title="Total" title-spacing="5" decimal-percentage="0">
       </px-vis-pie-chart>
     </px-card>
 

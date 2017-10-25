@@ -99,6 +99,9 @@ px-inbox {
 .kpi4 {
   --px-win-loss-positive-fill-color: $orange5;
 }
+.green {
+  color: $green5;
+}
 px-vis-timeseries {
   --px-vis-series-color-0: $blue5;
   --px-vis-series-color-1: $green5;
@@ -125,6 +128,12 @@ px-vis-timeseries {
   px-inbox {
     --px-inbox-height: 84.7vh;
   }
+}
+
+.center-icon {
+  display: inline-block;
+  width: 100%;
+  text-align:center;
 }
 
 // Trumps
