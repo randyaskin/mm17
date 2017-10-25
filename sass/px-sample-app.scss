@@ -127,6 +127,12 @@ px-vis-timeseries {
   }
 }
 
+.center-icon {
+  display: inline-block;
+  width: 100%;
+  text-align:center;  
+}
+
 // Trumps
 $inuit-enable-margins        : true;
 $inuit-enable-margins--tiny  : true;

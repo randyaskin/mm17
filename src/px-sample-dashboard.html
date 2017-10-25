@@ -14,6 +14,8 @@
 <link rel="import" href="../bower_components/px-slider/px-slider.html" />
 <link rel="import" href="../bower_components/px-modal/px-modal.html" />
 <link rel="import" href="../bower_components/px-vis-timeseries/px-vis-timeseries.html" />
+<link rel="import" href="/bower_components/px-icon-set/px-icon-set.html" /> 
+<link rel="import" href="/bower_components/px-icon-set/px-icon.html" />
 
 
 <link rel="import" href="../bower_components/iron-ajax/iron-ajax.html" />
@@ -88,15 +90,57 @@
     <!-- By placing several px-key-value-pairs in a flex container, we can easily create a "spine" which is a term
          we use for a row of KPIs or other high level information about an asset on the top of a dashboard. -->
 
-    <!-- <div class="spine u-pt">
-          <span class="heading--page u-p">{{title}}</span>
-
-          <div class="flex flex--wrap flex--justify">
-            <px-kpi class="kpi1 u-p" title="Avg temp" value="65" uom="ºF" spark-type="bar" spark-data='[57,59,61,63,64,68,72,73,72,68,63,57]'></px-kpi>
-            <px-kpi class="kpi2 u-p" title="Avg rainfall" value="22" uom="mm" spark-type="bar" spark-data='[48,53,38,18,8,3,3,3,3,10,23,51]'></px-kpi>
-            <px-kpi class="kpi3 u-p" title="Avg sun" value="8" uom="hrs/day" spark-type="bar" spark-data='[7,8,8,8,8,8,10,9,9,8,8,8]'></px-kpi>
+    <px-card class="light-card" header-text="Estimated Solar Installations By Income" icon="px-vis:closest-point-series">        
+      <!-- <div class="spine u-pt"> -->
+        <div class="flex flex--justify">
+          <div>
+              <px-icon class="center-icon" icon="px-nav:generic-user"></px-icon>
+              <px-key-value-pair class="kpi1 u-p" key="Less than $10,000" value=[[_inc1Perc]] uom="%" size="delta"></px-key-value-pair>              
+              <px-key-value-pair class="kpi1 u-p" value=[[_inc1]] uom="People" size="delta"></px-key-value-pair>              
           </div>
-        </div> -->
+          <div>
+              <px-icon class="center-icon" icon="px-nav:generic-user"></px-icon>
+              <px-key-value-pair class="kpi2 u-p" key="$10,000 to $14,999" value=[[_inc2Perc]] uom="%" size="delta"></px-key-value-pair>              
+              <px-key-value-pair class="kpi2 u-p" value=[[_inc2]] uom="People" size="delta"></px-key-value-pair>              
+          </div>
+          <div>
+              <px-icon class="center-icon" icon="px-nav:generic-user"></px-icon>
+              <px-key-value-pair class="kpi3 u-p" key="$15,000 to $24,999" value=[[_inc3Perc]] uom="%" size="delta"></px-key-value-pair>              
+              <px-key-value-pair class="kpi3 u-p" value=[[_inc3]] uom="People" size="delta"></px-key-value-pair>              
+          </div>
+          <div>
+              <px-icon class="center-icon" icon="px-nav:generic-user"></px-icon>
+              <px-key-value-pair class="kpi4 u-p" key="$25,000 to $34,999" value=[[_inc4Perc]] uom="%" size="delta"></px-key-value-pair>
+              <px-key-value-pair class="kpi4 u-p" value=[[_inc4]] uom="People" size="delta"></px-key-value-pair>              
+          </div>
+          <div>
+              <px-icon class="center-icon" icon="px-nav:generic-user"></px-icon>
+              <px-key-value-pair class="kpi5 u-p" key="$35,000 to $49,999" value=[[_inc5Perc]] uom="%" size="delta"></px-key-value-pair>
+              <px-key-value-pair class="kpi5 u-p" value=[[_inc5]] uom="People" size="delta"></px-key-value-pair>              
+          </div>
+          <div>
+              <px-icon class="center-icon" icon="px-nav:generic-user"></px-icon>
+              <px-key-value-pair class="kpi6 u-p" key="$50,000 to $74,999" value=[[_inc6Perc]] uom="%" size="delta"></px-key-value-pair>
+              <px-key-value-pair class="kpi6 u-p" value=[[_inc6]] uom="People" size="delta"></px-key-value-pair>              
+          </div>
+          <div>
+              <px-icon class="center-icon" icon="px-nav:generic-user"></px-icon>
+              <px-key-value-pair class="kpi7 u-p" key="$75,000 to $99,999" value=[[_inc7Perc]] uom="%" size="delta"></px-key-value-pair>
+              <px-key-value-pair class="kpi7 u-p" value=[[_inc7]] uom="People" size="delta"></px-key-value-pair>    
+          </div>
+          <div>
+              <px-icon class="center-icon" icon="px-nav:generic-user"></px-icon>
+              <px-key-value-pair class="kpi8 u-p" key="$100,000 to $149,999" value=[[_inc8Perc]] uom="%" size="delta"></px-key-value-pair>              
+              <px-key-value-pair class="kpi8 u-p" value=[[_inc8]] uom="People" size="delta"></px-key-value-pair>
+          </div>
+          <div>
+              <px-icon class="center-icon" icon="px-nav:generic-user"></px-icon>
+              <px-key-value-pair class="kpi9 u-p" key="$150,000+" value=[[_inc9Perc]] uom="%" size="delta"></px-key-value-pair>
+              <px-key-value-pair class="kpi9 u-p" value=[[_inc9]] uom="People" size="delta"></px-key-value-pair>              
+          </div>
+      <!-- </div> -->
+    </px-card>
+        
 
   </template>
 </dom-module>
