@@ -1,9 +1,10 @@
 ---
 applications:
-  - name: px-sample-app
+  - name: solar-sd
     buildpack: nodejs_buildpack
     command: node server/app.js
     path: dist
+    memory: 256M
 #services:
  # - your-name-uaa
  # - your-name-time-series
