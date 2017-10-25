@@ -1,6 +1,15 @@
 {
-	"ImportPath": "github.build.ge.com/212472270/mm-ts-forecasting",
+	"ImportPath": "github.com/randyaskin/mm17/savings",
 	"GoVersion": "go1.9",
 	"GodepVersion": "v79",
-	"Deps": []
+	"Deps": [
+		{
+			"ImportPath": "github.com/sajari/regression",
+			"Rev": "0e581038a68db47d90daf7024f8169d13e02dac5"
+		},
+		{
+			"ImportPath": "github.com/skelterjohn/go.matrix",
+			"Rev": "daa59528eefd43623a4c8e36373a86f9eef870a2"
+		}
+	]
 }
