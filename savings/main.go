@@ -27,14 +27,24 @@ type DataPoint struct {
 }
 
 const (
-	resCostPerInstall = 13824 // 4 kwH
-	comCostPerInstall = 55296 // 16 kWh
-	indCostPerInstall = 82944 // 24 kWh
+	resCostPerInstall = 27648  // 8 kwH
+	comCostPerInstall = 331776 // 96 kWh
+	indCostPerInstall = 442368 // 128 kWh
 
-	resEnergyPerInstall = 3400
-	comEnergyPerInstall = 13600
-	indEnergyPerInstall = 20400
+	resEnergyPerInstall = 6800
+	comEnergyPerInstall = 81600
+	indEnergyPerInstall = 108800
 )
+
+// const (
+// 	resCostPerInstall = 13824 // 4 kwH
+// 	comCostPerInstall = 55296 // 16 kWh
+// 	indCostPerInstall = 82944 // 24 kWh
+
+// 	resEnergyPerInstall = 3400
+// 	comEnergyPerInstall = 13600
+// 	indEnergyPerInstall = 20400
+// )
 
 var historicalConsumption []DataPoint
 var currentYear = 2015
