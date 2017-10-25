@@ -14,6 +14,7 @@
 <link rel="import" href="../bower_components/px-slider/px-slider.html" />
 <link rel="import" href="../bower_components/px-modal/px-modal.html" />
 <link rel="import" href="../bower_components/px-vis-timeseries/px-vis-timeseries.html" />
+<link rel="import" href="../bower_components/px-vis-pie-chart/px-vis-pie-chart.html" />
 
 
 <link rel="import" href="../bower_components/iron-ajax/iron-ajax.html" />
@@ -25,25 +26,27 @@
   <template>
     <style include="px-sample-app-styles"></style>
 
+    <iron-ajax url="https://regression.run.aws-usw02-pr.ice.predix.io/ts/predict/Dromore" method="POST" content-type="application/json" body='{"unit":"hr","times":5,"startDate":"7-Nov-2017 12:00","temperatures":[12.2,11.9,11,10,9]}' handle-as="json" last-response="{{chartData}}" auto></iron-ajax>
+
     <div class="spine u-pt">
       <span class="heading--page u-p">{{title}}</span>
       <div class="flex flex--wrap flex--justify">
-        <px-key-value-pair class="kpi1 u-p" key="Cost of Investment" value=[[_costOfInvestment]] uom="$ in Millions" size="beta"></px-key-value-pair>
+        <px-key-value-pair class="kpi1 u-p" key="Cost of Investment" value=[[_costOfInvestment]] uom="$ in Millions" size="gamma"></px-key-value-pair>
         <px-modal btn-modal-positive="BACK">
-          <px-key-value-pair class="kpi2 u-p modal-trigger" key="Power Consumption" value=[[_powerConsumption]] uom="GWh/yr" size="beta"></px-key-value-pair>
+          <px-key-value-pair class="actionable kpi2 u-p modal-trigger" key="Power Consumption" value=[[_powerConsumption]] uom="GWh/yr" size="gamma"></px-key-value-pair>
 
-          <px-card class="light-card" header-text="Solar Installations" icon="px-fea:products">
+          <px-card class="light-card" header-text="Regression Model" icon="px-fea:products">
             <px-vis-timeseries debounce-resize-timing="250" width="700" height="296" chart-horizontal-alignment="center" chart-vertical-alignment="center"
               margin='{"top":30,"bottom":60,"left":65,"right":65}' register-config='{"type":"horizontal"}' selection-type="xy"
-              chart-data="[[chartData]]" series-config='{"y0":{"name":"y0","x":"timeStamp","y":"y0","yAxisUnit":"F","axis":{"id":"axis1","side":"left","number":"1"}},"y1":{"name":"y1","x":"timeStamp","y":"y1","yAxisUnit":"Hz","axis":{"id":"axis2","side":"right","number":"1"}},"y2":{"name":"y2","x":"timeStamp","y":"y2","yAxisUnit":"C","axis":{"id":"axis3","side":"left","number":"2"}},"y3":{"name":"y3","x":"timeStamp","y":"y3","yAxisUnit":"F","axis":{"id":"axis4","side":"right","number":"2"}}}'
-              chart-extents='{"x":["dynamic","dynamic"],"y":["dynamic","dynamic"]}' x-axis-config='{"title":"Date"}' y-axis-config='{"title":"Single","titleTruncation":false,"unit":"F","axis1":{"title":"Temperature","titleTruncation":false,"unit":"C"}}'
+              chart-data="[[chartData]]" series-config='{"y0":{"name":"y0","x":"timestamp","y":"value","yAxisUnit":"","axis":{"id":"axis1","side":"left","number":"1"}}}'
+              chart-extents='{"x":["dynamic","dynamic"],"y":["dynamic","dynamic"]}' x-axis-config='{"title":"Date"}' y-axis-config='{"title":"Single","titleTruncation":false,"unit":"","axis1":{"title":"Power Consumption","titleTruncation":false,"unit":""}}'
               disable-navigator>
             </px-vis-timeseries>
           </px-card>
         </px-modal>
 
-        <px-key-value-pair class="kpi3 u-p" key="Renewable Output" value=[[_renewableOutput]] uom="GWh" size="beta"></px-key-value-pair>
-        <px-key-value-pair class="kpi4 u-p" key="Carbon Offset" value=[[_carbonOffset]] uom="GWh" size="beta"></px-key-value-pair>
+        <px-key-value-pair class="kpi3 u-p" key="Renewable Output" value=[[_renewableOutput]] uom="GWh" size="gamma"></px-key-value-pair>
+        <px-key-value-pair class="kpi4 u-p" key="Carbon Offset" value=[[_carbonOffset]] uom="GWh" size="gamma"></px-key-value-pair>
       </div>
     </div>
 
@@ -55,7 +58,7 @@
     </px-card>
 
     <!-- This last px-card includes a px-map. -->
-    <iron-ajax url="/data/solar_permits.json" handle-as="json" last-response="{{mapData}}" auto></iron-ajax>
+    <iron-ajax url="solar_permits.json" handle-as="json" last-response="{{mapData}}" auto></iron-ajax>
     <iron-ajax id="savingsCalc" url="" handle-as="json" last-response="{{_savingsResponse}}" on-response="handleSavingsResponse" auto></iron-ajax>
     <px-card class="light-card" header-text="Solar Installations" icon="px-fea:products">
       <div class='actions'>
@@ -64,15 +67,15 @@
       <div class="flex flex--row">
         <div style="flex:0 0 25%;">
           <span class="u-p">New Residential Installs (%)</span>
-          <px-slider value={{_residentialSliderPercentage}} end-value="100" min="0" max="100" step="5" scale="linear" base="10" exponent="2" min-label-position="bottom"
+          <px-slider id="res" value={{_residentialSliderPercentage}} end-value="100" min="0" max="100" step="5" scale="linear" base="10" exponent="2" min-label-position="bottom"
             max-label-position="bottom" on-value-changed="updateMap"></px-slider>
 
           <span class="u-p">New Commercial Installs (%)</span>
-          <px-slider value={{_commercialSliderPercentage}} end-value="100" min="0" max="100" step="5" scale="linear" base="10" exponent="2" min-label-position="bottom"
+          <px-slider id="com" value={{_commercialSliderPercentage}} end-value="100" min="0" max="100" step="5" scale="linear" base="10" exponent="2" min-label-position="bottom"
             max-label-position="bottom" on-value-changed="updateMap"></px-slider>
 
           <span class="u-p">New Industrial Installs (%)</span>
-          <px-slider value={{_industrialSliderPercentage}} end-value="100" min="0" max="100" step="5" scale="linear" base="10" exponent="2" min-label-position="bottom"
+          <px-slider id="ind" value={{_industrialSliderPercentage}} end-value="100" min="0" max="100" step="5" scale="linear" base="10" exponent="2" min-label-position="bottom"
             max-label-position="bottom" on-value-changed="updateMap"></px-slider>
         </div>
         <div style="flex:0 0 75%;">
@@ -85,18 +88,24 @@
       </div>
     </px-card>
 
-    <!-- By placing several px-key-value-pairs in a flex container, we can easily create a "spine" which is a term
-         we use for a row of KPIs or other high level information about an asset on the top of a dashboard. -->
-
-    <!-- <div class="spine u-pt">
-          <span class="heading--page u-p">{{title}}</span>
-
-          <div class="flex flex--wrap flex--justify">
-            <px-kpi class="kpi1 u-p" title="Avg temp" value="65" uom="ºF" spark-type="bar" spark-data='[57,59,61,63,64,68,72,73,72,68,63,57]'></px-kpi>
-            <px-kpi class="kpi2 u-p" title="Avg rainfall" value="22" uom="mm" spark-type="bar" spark-data='[48,53,38,18,8,3,3,3,3,10,23,51]'></px-kpi>
-            <px-kpi class="kpi3 u-p" title="Avg sun" value="8" uom="hrs/day" spark-type="bar" spark-data='[7,8,8,8,8,8,10,9,9,8,8,8]'></px-kpi>
-          </div>
-        </div> -->
+    <px-card header-text="San Diego Budget" icon="px-fea:analysis">
+      <px-vis-pie-chart
+      prevent-resize
+      width="450"
+      height="450"
+      chart-horizontal-alignment="center"
+      chart-vertical-alignment="center"
+      margin='{"top":"10","bottom":"10","left":"0","right":"0"}'
+      register-config='{"type":"vertical","width":400,"truncationLength":"100"}'
+      chart-data="[[pieChartData]]"
+      series-config='{"mySerie":{"xAxisUnit":"million","y":"y","x":"x"}}'
+      preserve-data-order
+      inner-radius="0"
+      title="Total"
+      title-spacing="5"
+      decimal-percentage="0">
+      </px-vis-pie-chart>
+    </px-card>
 
   </template>
 </dom-module>

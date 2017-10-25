@@ -17,6 +17,7 @@
     "bower_components/px-demo/px-demo-theme-util.html",
     "bower_components/px-vis/px-vis-worker.js",
     "bower_components/px-vis/px-vis-worker-scale.js",
+    "data/solar_permits.json",
     "favicon.ico"
   ],
   "lint": {
