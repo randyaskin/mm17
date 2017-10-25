@@ -1419,9 +1419,9 @@
       console.log("world");
       var base = "https://savings-app.run.aws-usw02-pr.ice.predix.io";
 
-      var res = this._residentialSliderPercentage;
-      var com = this._commercialSliderPercentage;
-      var ind = this._industrialSliderPercentage;
+      var res = (this._residentialSliderPercentage / 100) * 500000;
+      var com = (this._commercialSliderPercentage / 100) * 10000;
+      var ind = (this._industrialSliderPercentage / 100) * 2000;
       var cn = this._carbonNuetralDate;
 
       this.$.savingsCalc.url = base + "/v1/savings?com=" + com + "&res=" + res + "&ind=" + ind + "&targetYear=" + cn;
